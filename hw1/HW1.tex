@@ -1,0 +1,262 @@
+\documentclass{amsart}
+
+% PACKAGES
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb,enumerate}
+\usepackage{amsthm,stmaryrd}
+\usepackage[all]{xy}
+\usepackage{hyperref}
+
+%\theoremstyle{definition}
+%\newtheorem{exer}{Exercise}
+\newcommand{\llll}{\mathcal{L}}
+\newcommand{\bbr}{\mathbb{R}}
+\newcommand{\bbc}{\mathbb{C}}
+\newcommand{\bbz}{\mathbb{Z}}
+\newcommand{\bbq}{\mathbb{Q}}
+\newcommand{\bbn}{\mathbb{N}}
+\newcommand{\be}{\mathbf{e}}
+\newcommand{\ba}{\mathbf{a}}
+\newcommand{\fm}{\mathfrak{m}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\renewcommand{\ker}{\operatorname{Ker}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\xra}{\xrightarrow}
+\newcommand{\wti}{\widetilde}
+
+\theoremstyle{plain}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}[lem]{Corollary}
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{thm}[lem]{Theorem}
+\newtheorem{conj}[lem]{Conjecture}
+\newtheorem{intthm}{Theorem}
+\renewcommand{\theintthm}{\Alph{intthm}}
+
+\theoremstyle{definition}
+\newtheorem{defn}[lem]{Definition}
+\newtheorem{ex}[lem]{Example}
+\newtheorem{question}[lem]{Question}
+\newtheorem{questions}[lem]{Questions}
+\newtheorem{problem}[lem]{Problem}
+\newtheorem{disc}[lem]{Remark}
+\newtheorem{rmk}[lem]{Remark}
+\newtheorem{construction}[lem]{Construction}
+\newtheorem{notn}[lem]{Notation}
+\newtheorem{fact}[lem]{Fact}
+\newtheorem{para}[lem]{}
+\newtheorem{exer}[lem]{Exercise}
+\newtheorem{remarkdefinition}[lem]{Remark/Definition}
+\newtheorem{notation}[lem]{Notation}
+\newtheorem{step}{Step}
+\newtheorem{convention}[lem]{Convention}
+\newtheorem*{Convention}{Convention}
+\newtheorem{assumption}[lem]{Assumption}
+
+\newcommand{\fmn}{F^{m\times n}}
+\newcommand{\fnn}{F^{n\times n}}
+\newcommand{\col}{\operatorname{Col}}
+\newcommand{\row}{\operatorname{Row}}
+\newcommand{\Span}{\operatorname{Span}}	
+\newcommand{\rank}{\operatorname{rank}}	
+
+\begin{document}
+
+\noindent MATH 8170,  \\
+Fall 2016\\
+HW 1\\
+Shuai Wei \\
+\
+\textwidth 6.0in \oddsidemargin 0.0in
+
+\noindent \textbf{1.} \\
+
+\begin{align*}
+	P\big(N(t) = k\big)  &= P(T_k \leq t < T_{k+1}) \\
+						&= P(T_k \leq t) - P(T_{k+1} \leq t) \\
+\end{align*}
+	$\{T_1 = X_1\}$ may be interpreted as the rewarded recieved after conducted one bernoulli trail. $X_1 = 1$ if trial fails and $X_1 = 2$ if it succeeds.\\
+	$\{T_n = X_n\}$ may be interpreted as the rewards $n$ recieved after conducting $k$ bernoulli trails, and then we have $n-k$ succeses and $k-(n-k) = 2k-n$ fails. Moreover, the rewards $n$ range from $k$ to $2k$. \\
+	\begin{align*}
+		P(T_k = n)  = {k \choose {n-k}} 0.2^{n-k} 0.8^{2k-n}, n = k, k+1, ..., 2k 
+	\end{align*}
+ So
+ 	\begin{align*}
+		P\big(N(t) = k\big) &= \sum_{n = k}^{\text{min}(\lfloor t\rfloor,2k)} P(T_k = n) - \sum_{n = k+1}^{\lfloor t\rfloor} P(T_{k+1} = n) \\
+	   				  	  &= \sum_{n = k}^{\text{min}(\lfloor t\rfloor,2k)} {k \choose {n-k}} 0.2^{n-k} 0.8^{2k-n} - \sum_{n = k+1}^{\text{min}(\lfloor t\rfloor,2k+2)} {k+1 \choose {n-k-1}} 0.2^{n-k-1} 0.8^{2k+2-n} \\
+ 	\end{align*}
+ 
+ \noindent \textbf{2.}\\
+Assume $T_0 = 0$.\\
+\begin{align*}
+	E(A(t)B(t)) &= \int_{0}^{\infty}E(A(t)B(t)|T_1 = s)dF(s) \\
+			    	  	 &= \int_{0}^{t}E(A(t)B(t)|T_1 = s)dF(s) + \int_{t}^{\infty}E(A(t)B(t)|T_1 = s)dF(s) \\
+			   		 	&= \int_{0}^{t} E(A(t-s)B(t-s)dF(s) + E\Big((t-T_{N(t)})(T_{N(t)+1} - t) | T_1 \geq t\Big)\\
+			  	 	  &= \int_{0}^{t} E(A(t-s)B(t-s)dF(s) + E\big(t(T_1 - t)| T_1 \geq t\Big) 
+\end{align*}
+Then $h(t) = E\big(t(T_1 - t) | T_1 \geq t \big) $, so $h$ is continuous a.e on $[0,\infty)$.\\
+	so for $t \geq 1$
+	\begin{align*}
+		|h(t)|  &= E\big(t(T_1 - t)|T_1 \geq t) \leq E\big(T_1/2(T_1 - T_1/2)|T_1 \geq t\big) \\
+				&= E\big(T_1^2/4\big|T_1 \geq t) \\
+				&= \frac{1}{4}E(T_1^2|T_1 \geq  t) = b(t). 
+	\end{align*}
+	It is obvious that $b(t)$ is directly Riemann integrable since $F$ has finite second moment.\\
+	Besides, $F$ is nonarithmetic.\\
+	So the key renewal theorem is applicable, and \\
+	\begin{align*}	
+		\lim_{t\to \infty} E(A(t)B(t)) &= \frac{1}{E(X_1)}\int_0^{\infty}E\big(t(T_1 - t)| T_1 \geq t\Big)dt \\
+									   &= \frac{1}{E(X_1)} \int_0^{\infty} E(tT_1-t^2 | T_1 \geq t )dt \\
+				  			 		   &= \frac{1}{E(X_1)} \int_0^{\infty} \int_{t}^{\infty} E(tT_1-t^2 | T_1= s) dF(s)dt \\
+						 		   	   &= \frac{1}{E(X_1)} \int_0^{\infty} \int_{t}^{\infty} E(ts-t^2) dF(s)dt\\
+									   &= \frac{1}{E(X_1)} \int_0^{\infty} \int_{t}^{\infty} ts-t^2 dF(s)dt \\
+									   &= \frac{1}{E(X_1)} \int_0^{\infty} \Bigg(t\int_{t}^{\infty}sdF(s)-t^2\int_{t}^{\infty} dF(s)\Bigg)dt \\
+									   &= \frac{1}{\int_{0}^{\infty}sdF(s)} \int_0^{\infty} \Bigg(t\int_{t}^{\infty}sdF(s)-t^2\big(1-F(t)\big)\Bigg)dt
+	\end{align*}
+
+\noindent \textbf{3.}\\
+
+\begin{align*}
+	P(N(t) \text{ is odd } ) &= P\big(N(t) \text{ is odd }, T_1 > t\big) + P(N(t) \text{ $N(t)$ is odd }, T_1 \leq t) \\
+							 &= P\big(N(t)\text{ is odd }, T_1 \leq t\big) \\
+						 	 &= \int_{0}^{t}P\big(N(t) \text{ is odd }|T_1 = s\big)dF(s) \\
+							 &= \int_{0}^{t}P\big(\text{ $N(t-s)$ is even })dF(s) \\
+							 &= \int_{0}^{t}\Big(1-P\big(\text{ $N(t-s)$ is odd }\big)\Big)dF(s) \\
+							 &= \int_{0}^{t}dF(s) -\int_{0}^{t}P\big(\text{ $N(t-s)$ is odd }\big)dF(s) \\
+							 &= F(t) -\int_{0}^{t}P\big(\text{ $N(t-s)$ is odd }\big)dF(s) \\
+\end{align*}
+Let $H(t) = P(N(t) \text{ is odd } )$, then $H(0) = 0$ and $F(t) = 1 -e^{-\lambda t}$ and $dF(s) = \lambda e^{-\lambda s}ds$.
+\begin{align*}
+	H(t) &= F(t)-\int_{0}^{t}H(t-s)dF(s) \\
+			   &= 1 -e^{-\lambda t} - \int_{0}^{t}H(t-s) \lambda e^{-\lambda s}ds \\
+			   &=1 -e^{-\lambda t} - \lambda e^{-\lambda t}\int_{0}^{t}H(x)e^{\lambda x}dx \\
+\end{align*}
+Take derivatives on both sides, we have\\
+\begin{align*}
+	H'(t) &= \lambda e^{-\lambda t} +\lambda^2e^{-\lambda t}\int_{0}^{t}H(x)e^{\lambda x}dx-\lambda e^{-\lambda t}H(t)e^{\lambda t}\\
+		  &= \lambda e^{-\lambda t} +\lambda^2e^{-\lambda t}\int_{0}^{t}H(x)e^{\lambda x}dx-\lambda H(t)\\
+		  &= \lambda e^{-\lambda t} + \lambda(1-e^{-\lambda t}-H(t)) -\lambda H(t)\\
+		  &= \lambda - 2\lambda H(t) 
+\end{align*}
+So 
+\[H'(t) + 2\lambda H(t) = \lambda \]
+It can be found that $\frac{\lambda}{2}$ is the special solution and $Ce^{-2\lambda t}, C \neq 0$ are the general solutions.\\
+So $H(t) = Ce^{-2\lambda t} + \frac{1}{2}$ is the general form of the solution.\\
+Since $H(0) = C+ \frac{1}{2} = 0$, we have $C = -\frac{1}{2}$.\\
+Thus,
+\[ H(t) = -\frac{1}{2}e^{-2\lambda t} + \frac{1}{2}.\]
+
+\noindent \textbf{4.}\\
+\begin{proof}
+	\begin{enumerate}[(a)]
+	\item
+	$ $\newline
+	\begin{align*}
+		\lim_{n \to \infty} \frac{T^D_n}{n} &= \lim_{n\to \infty} \frac{X_1+\sum_{i=2}^{n}X_i}{n}\\ 
+									      &= \lim_{n\to \infty} \frac{\sum_{i=2}^{n}X_i}{n} \\
+									  	  &= \lim_{n\to \infty} \frac{\sum_{i=2}^{n}X_i}{n-1}\frac{n-1}{n}\\
+			 						  	  &= \lim_{n\to \infty} \frac{\sum_{i=2}^{n}X_i}{n-1} \lim_{n\to \infty}\frac{n-1}{n}\\	
+							  			  &= E[X_2] \ \ w.p.1\\
+	\end{align*}
+	by central limit theorem since $X_n, n \geq 2$ are $iid$.\\
+	Then there exists an event $A \subseteq \Omega$ with $P(A) = 1$ and $\lim_{t\to \infty}\frac{T^D_n(\omega)}{n} = \mu$ for each $\omega \in A$.\\
+	We observe that $T^D_n(\omega) < \infty$ for each $n$ and $T^D_n(\omega) \to \infty$ as $n\to \infty$, which implies $\lim_{t\to \infty}N^D(t,\omega) = \infty$.\\
+	Fix an $\omega \in A$. For each $t>0$, 
+		\[ T^D_{N^D(t)}(\omega) \leq t < T^D_{N^D(t)+1}(\omega).\]
+	Let $t$ large enough such that $N^D(t,\omega) \geq 1$, and divide the above equalities by $N^D(t,\omega)$, so we have 
+	\[ \frac{T^D_{N^D(t)}(\omega)}{N^D(t,\omega)} \leq \frac{t}{N^D(t,\omega)} < \frac{T^D_{N^D(t)}(\omega)+1}{N^D(t,\omega)} \]
+	Namely,	
+	\[ \frac{T^D_{N^D(t)}(\omega)}{N^D(t,\omega)} \leq \frac{t}{N^D(t,\omega)} < \frac{T^D_{N^D(t)}(\omega)+1}{N^D(t,\omega)+1} \frac{{N^D(t,\omega)+1}}{N^D(t,\omega)} \]
+	Let $t\to \infty$, then
+	\[ \frac{T^D_{N^D(t)}(\omega)}{N^D(t,\omega)} \to E[X_2] \text{ and } \frac{T^D_{N^D(t)}(\omega)+1}{N^D(t,\omega)+1} \frac{{N^D(t,\omega)+1}}{N^D(t,\omega)} \to E[X_2].\]	
+	So 
+	\[ \lim_{t\to \infty} \frac{N_D(t)}{t} = \frac{1}{E[X_2]} \]
+	\item 
+	Step1:\\
+	Note that the $r.v\ N^D(t)+1$ is a stopping time $w.r.t\ \{X_n\}_{n=1}^{\infty}$.\\
+	Since 
+	\[ 1\big({N^D(t)+1 \geq k}\big) = 1-1\big({N^D(t)+1 < k}\big) = 1-1\big({N^D(t)+1 \leq k-1}\big), \]
+	$1\big({N^D(t)+1 \geq k}\big)$ is a function of $X_0,X_1,...X_{k-1}$, and $1\big({N^D(t) \geq k}\big)$ is independent of $X_k$.\\
+	Therefore,
+	\begin{align*}
+		E\big(T^D_{N^D(t)+1}\big)   &= E\Bigg( \sum_{k=1}^{N^D(t)+1}X_k \Bigg) \\
+								  	&= E\Big( \sum_{k=1}^{\infty}X_k1\big({N^D(t)+1 \geq k}\big) \Big) \\
+									&= \sum_{k=1}^{\infty}E\bigg(X_k1\big({N^D(t)+1 \geq k}\big)\bigg)\\
+		 			   			   	&= \sum_{k=1}^{\infty}E(X_k)P\big({N^D(t)+1 \geq k}\big)\\
+		 			   			   	&= E(X_1)P\big({N^D(t)+1 \geq 1}\big) + \sum_{k=2}^{\infty}E(X_k)P\big({N^D(t)+1 \geq k}\big)\\
+		 			   			   	&= E(X_1) + \sum_{k=1}^{\infty}E(X_{k+1})P\big({N^D(t)+1 \geq k+1}\big)\\
+		 			   			   	&= E(X_1) + \sum_{k=1}^{\infty}E(X_{k+1})P\big({N^D(t) \geq k}\big)\\
+		 			   			   	&= E(X_1) + E(X_2)\sum_{k=1}^{\infty}P\big({N^D(t) \geq k}\big)\\
+									&= E(X_1) +  E(X_2)E\big(N^D(t)\big).
+	\end{align*}
+	So 
+	\[ t < E\big(T^D_{N^D(t)+1}\big)  = E(X_1) +  E(X_2)E\big(N^D(t)\big).\]
+	Then 
+	\[ \frac{E\big(N^D(t)\big)}{t} > \frac{1}{E(X_2)} - \frac{E(X_1)}{E(X_2)}\frac{1}{t}.\] 
+	Thus,
+	\[\lim_{t\to \infty }\frac{E\big(N^D(t)\big)}{t} \geq \frac{1}{E(X_2)}. \]
+	Step2:\\
+	Fix $a > 0$, and define $X_n^{(a)} = \text{min}\{X_n,a\}$.\\
+	Let ${T^{D(a)}_n} = \sum_{k=1}^nX_n^{(a)}$, and define a new renewal process $\{N^{D(a)}(t)\}$ whose points are given by $\{T^{D(a)}_n\}$.\\
+	Then 
+	\[ E\Big( T^{D(a)}_{N^{D(a)}(t) + 1}\Big) = E\big(X_1^{a}\big) +  E\big(X_2^{(a)}\big)E\big(N^{D(a)}(t)\big).\]
+	by following the similat process with Step 1.\\
+	Next we note that 
+	\[ T^{D(a)}_{N^{D(a)}(t) + 1} = T^{D(a)}_{N^{D(a)}(t)} + X_{N^{D(a)}(t) + 1}^{(a)} \leq t + a.\]
+	So
+	\begin{align*}
+		E\Big( T^{D(a)}_{N^{D(a)}(t) + 1}\Big) \leq t+a & \implies
+		E(X_1^{a}) +  E(X_2^{(a)})E\big(N^{D(a)}(t)\big) \leq t+a  \\
+		& \implies \frac{E\big(N^{D(a)}(t)\big)}{t} \leq \frac{1}{E\big(X_2^{(a)}\big)}+\frac{a-E\big(X_1^a\big)}{E\big(X_2^{(a)}\big)}\frac{1}{t}\\
+		& \implies \lim_{t\to \infty}sup \frac{E\big(N^{D(a)}(t)\big)}{t} \leq \frac{1}{E\big(X_2^{(a)}\big)}
+	\end{align*}
+	Since $N^D(t) < N^{D(a)}(t)$, we have 
+	\[	\lim_{t\to \infty}sup \frac{E\big(N^D(t)\big)}{t} \leq \frac{1}{E\big(X_2^{(a)}\big)}. \]
+	Let $a\to \infty$, and we have \\
+	\[	\lim_{t\to \infty}sup \frac{E\big(N^D(t)\big)}{t} \leq \frac{1}{E\big(X_2\big)} \]
+	According to the above two steps, we have
+	\[	\lim_{t \to \infty} \frac{E\big(N^D(t) \big)}{t}  = \frac{1}{E(X_2)}\]
+\end{enumerate}
+\end{proof}
+ 
+\noindent \textbf{5.} 
+\begin{enumerate}[(a)]
+	\item
+		Define $X_i$ as how long it takes the miner to make the $i$-th journey. \\
+		Define the stopping time $N$ as the first journey which takes the miner 2 days.\\ 
+		Verify: 
+		\[1(N=n) = 1(X_1 = 4\text{ or }6 \text{ for } i = 1,2,...n-1, X_{n-1} = 2)	\]		 
+		\[P(N=i) = \Big({\frac{2}{3}}\Big)^{i-1}\frac{1}{3},\ \ i = 1,2,...\]
+		So $N\sim Geo\Big(\frac{1}{3}\Big)$ and  
+		\[E(N) = 3\]
+		Morevoer,
+		\[ P(X_i = j) = \frac{1}{3}\text{ for $j=2,4,6$. } \]
+		So for $i=1,2,...,$
+		\[E(X_i) = \frac{1}{3}(2+4+6) = 4.\]
+	\item
+		By Wald's equalitiy,
+		\[ E(T)  = E(N)E(X_i) = 3*4 = 12\]
+	\item
+		\begin{align*}
+			E\Bigg(\sum_{i=1}^NX_i|N=n\Bigg) &= E\Bigg(\sum_{i=1}^nX_i\Bigg )\\
+											 &=\sum_{i=1}^nE(X_i)\\
+											 &=4n
+		\end{align*}
+		since $n$ is a constant and $X_i$ are $iid$.\\
+	\item
+		By part (c), we have 
+		\[E(T|N) = E\Bigg(\sum_{i=1}^NX_i|N\Bigg) =4N.\]
+		So
+		\[ E(T)= E\big(E(T|N)\big) = E(4N) = 4E(N) = 4*3 = 12. \]
+\end{enumerate}
+
+\noindent \textbf{6.} \\
+Let $\mu_G$ denote the mean service time.\\
+Then the mean time of a cycle is $\mu_G + \frac{1}{\lambda}$ by the memoryless property of the Poisson process.\\
+So the proportion of time (on the average) the server is busy is $\frac{\mu_G}{\mu_G + \frac{1}{\lambda}}$.
+
+
+
+\end{document}
