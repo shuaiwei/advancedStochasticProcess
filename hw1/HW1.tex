@@ -71,7 +71,7 @@ Shuai Wei \\
 \
 \textwidth 6.0in \oddsidemargin 0.0in
 
-\noindent \textbf{1.} \\
+\noindent \textbf{1.} 
 
 \begin{align*}
 	P\big(N(t) = k\big)  &= P(T_k \leq t < T_{k+1}) \\
@@ -88,8 +88,10 @@ Shuai Wei \\
 	   				  	  &= \sum_{n = k}^{\text{min}(\lfloor t\rfloor,2k)} {k \choose {n-k}} 0.2^{n-k} 0.8^{2k-n} - \sum_{n = k+1}^{\text{min}(\lfloor t\rfloor,2k+2)} {k+1 \choose {n-k-1}} 0.2^{n-k-1} 0.8^{2k+2-n} \\
  	\end{align*}
  
+\vspace{5mm}
+
  \noindent \textbf{2.}\\
-Assume $T_0 = 0$.\\
+Assume $T_0 = 0$.
 \begin{align*}
 	E(A(t)B(t)) &= \int_{0}^{\infty}E(A(t)B(t)|T_1 = s)dF(s) \\
 			    	  	 &= \int_{0}^{t}E(A(t)B(t)|T_1 = s)dF(s) + \int_{t}^{\infty}E(A(t)B(t)|T_1 = s)dF(s) \\
@@ -97,7 +99,7 @@ Assume $T_0 = 0$.\\
 			  	 	  &= \int_{0}^{t} E(A(t-s)B(t-s)dF(s) + E\big(t(T_1 - t)| T_1 \geq t\Big) 
 \end{align*}
 Then $h(t) = E\big(t(T_1 - t) | T_1 \geq t \big) $, so $h$ is continuous a.e on $[0,\infty)$.\\
-	so for $t \geq 1$
+	so for $t \geq 1,$
 	\begin{align*}
 		|h(t)|  &= E\big(t(T_1 - t)|T_1 \geq t) \leq E\big(T_1/2(T_1 - T_1/2)|T_1 \geq t\big) \\
 				&= E\big(T_1^2/4\big|T_1 \geq t) \\
@@ -105,7 +107,7 @@ Then $h(t) = E\big(t(T_1 - t) | T_1 \geq t \big) $, so $h$ is continuous a.e on 
 	\end{align*}
 	It is obvious that $b(t)$ is directly Riemann integrable since $F$ has finite second moment.\\
 	Besides, $F$ is nonarithmetic.\\
-	So the key renewal theorem is applicable, and \\
+	So the key renewal theorem is applicable, and 
 	\begin{align*}	
 		\lim_{t\to \infty} E(A(t)B(t)) &= \frac{1}{E(X_1)}\int_0^{\infty}E\big(t(T_1 - t)| T_1 \geq t\Big)dt \\
 									   &= \frac{1}{E(X_1)} \int_0^{\infty} E(tT_1-t^2 | T_1 \geq t )dt \\
@@ -115,9 +117,7 @@ Then $h(t) = E\big(t(T_1 - t) | T_1 \geq t \big) $, so $h$ is continuous a.e on 
 									   &= \frac{1}{E(X_1)} \int_0^{\infty} \Bigg(t\int_{t}^{\infty}sdF(s)-t^2\int_{t}^{\infty} dF(s)\Bigg)dt \\
 									   &= \frac{1}{\int_{0}^{\infty}sdF(s)} \int_0^{\infty} \Bigg(t\int_{t}^{\infty}sdF(s)-t^2\big(1-F(t)\big)\Bigg)dt
 	\end{align*}
-
-\noindent \textbf{3.}\\
-
+\noindent \textbf{3.}
 \begin{align*}
 	P(N(t) \text{ is odd } ) &= P\big(N(t) \text{ is odd }, T_1 > t\big) + P(N(t) \text{ $N(t)$ is odd }, T_1 \leq t) \\
 							 &= P\big(N(t)\text{ is odd }, T_1 \leq t\big) \\
@@ -147,6 +147,8 @@ So $H(t) = Ce^{-2\lambda t} + \frac{1}{2}$ is the general form of the solution.\
 Since $H(0) = C+ \frac{1}{2} = 0$, we have $C = -\frac{1}{2}$.\\
 Thus,
 \[ H(t) = -\frac{1}{2}e^{-2\lambda t} + \frac{1}{2}.\]
+
+\vspace{5mm}
 
 \noindent \textbf{4.}\\
 \begin{proof}
@@ -221,6 +223,8 @@ Thus,
 \end{enumerate}
 \end{proof}
  
+\vspace{5mm}
+
 \noindent \textbf{5.} 
 \begin{enumerate}[(a)]
 	\item
@@ -252,11 +256,83 @@ Thus,
 		\[ E(T)= E\big(E(T|N)\big) = E(4N) = 4E(N) = 4*3 = 12. \]
 \end{enumerate}
 
+\vspace{5mm}
+
 \noindent \textbf{6.} \\
 Let $\mu_G$ denote the mean service time.\\
 Then the mean time of a cycle is $\mu_G + \frac{1}{\lambda}$ by the memoryless property of the Poisson process.\\
 So the proportion of time (on the average) the server is busy is $\frac{\mu_G}{\mu_G + \frac{1}{\lambda}}$.
 
+\vspace{5mm}
+\noindent \textbf{7.}
+\begin{enumerate}[(a)]
+	\item
+	let $\{N(t), t\geq 0\}$ be the Poisson process that passengers arrive at the bus stop.\\
+	Fix $t$, then $N(t) \sim Possion(\lambda t)$ and $E\big(N(t)\big) = \lambda t$.\\
+	let $M(t)$ be the renewal process that the buses arrive with points $\{T_n\}$ and interrenewals $X_n$, assume at the $T_n$, the total amount of passengers waiting for buses is $R_n$. \\
+	Then $\{(X_n,R_n)\}$ is an $iid$ sequence and $0<E(X_1) < \infty$ and $E(R_1) < \infty$.\\
+	Let $R(t)$ be the amount of rewards accumulated in $[0,t]$.\\
+	So we have the average number of people who are waiting for a bus
 
+	\[\lim_{t\to \infty} \frac{R(t)}{t} = \frac{E(R_1)}{E(X_1)},\]
+	and 
+
+	\[E(R_1) = E\big( N(T_1)\big).\]
+
+	Since 
+	\[E\big(N(T_1)|T_1= t\big) = E\big(N(t)\big) = \lambda t,\]
+
+	\[E(R_1) = E\Big(E\big(N(T_1)|T_1\big)\Big) = E(\lambda T_1) = \lambda E(T_1)  \]	
+	So the average number of people who are waiting for a bus
+	\begin{align*}
+		\lim_{t\to \infty} \frac{R(t)}{t} &= \frac{E(R_1)}{E(X_1)}\\
+					 		  	   	  	  &= \frac{\lambda E(T_1)}{E(X_1)}\\
+									  	  & = \lambda
+	\end{align*}
+	\item
+		We construct a discrete time renewal reward process $\{W_n\}_{n\geq 1}$ w.r.t $\{nN\}_{n\geq 1}$, where $N$ is the waiting time of the $n$th passenger, and $N$ is the number of passengers who arrive during the cycles in part (a).\\
+		Then 
+		\[E(N) = \lambda.\]
+	Let the total waiting time between $nN$ and $(n+1)N$ be
+	\[ R_n = \sum_{k=nN+1}^{(n+1)N}W_k, n\geq 1 \]
+	\begin{align*}
+		E(R_n) &= E\Bigg(\sum_{k=nN+1}^{(n+1)N}W_k \Bigg) \\
+		       &= E\Bigg(E\Bigg(\sum_{k=nN+1}^{(n+1)N}W_k | N \Bigg)\Bigg) \\
+	\end{align*}
+	Since 
+	\begin{align*}
+		E\Bigg(\sum_{k=nN+1}^{(n+1)N}W_k | N = m \Bigg) &= E\Bigg(\sum_{k=nm+1}^{(n+1)m}W_k\Bigg)\\
+														&= E\Bigg(\sum_{k=1}^{m}W_k\Bigg)\\
+														&= \sum_{k=1}^{m}E(W_k) \\
+														&=\sum_{k=1}^{m}E\big(E(W_k|T_1)\big)
+	\end{align*}
+	Since 
+	\begin{align*}
+		E(W_k|T_1= t) = t - \frac{k}{\lambda}, 
+	\end{align*}
+	\[E(W_k|T_1) = T_1- \frac{k}{\lambda}.\]
+	So  
+	\begin{align*}
+		E\Bigg(\sum_{k=nN+1}^{(n+1)N}W_k | N = m \Bigg) &= \sum_{k=1}^{m} E\Big(T_1- \frac{k}{\lambda}\Big)\\
+														&= \sum_{k=1}^{m} \Big(E(T_1)- \frac{k}{\lambda}\Big)\\
+														&= mE(T_1) - \frac{m(m+1)}{2\lambda}.
+	\end{align*}
+	Then 
+	\[ E\Bigg(\sum_{k=nN+1}^{(n+1)N}W_k | N \Bigg) = NE(T_1) - \frac{N(N+1)}{2\lambda}  \]
+
+	Thus, 
+	\begin{align*}
+		E(R_n) &= E\Big(\frac{N-1}{2}\Big)\\
+			   &= \frac{E(N)-1}{2} \\
+			   &= \frac{\lambda-1}{2}
+	\end{align*}
+
+	Thus, the average amount of time that a passenger waits is 
+	\begin{align*}
+		\frac{E(R_n)}{E(N)} &= \frac{\lambda-1}{2\lambda}\\
+							&= \frac{1}{2} - \frac{1}{2\lambda}
+	\end{align*}
+
+\end{enumerate}	
 
 \end{document}
