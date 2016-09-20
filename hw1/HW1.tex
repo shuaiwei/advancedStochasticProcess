@@ -77,7 +77,7 @@ Shuai Wei \\
 	P\big(N(t) = k\big)  &= P(T_k \leq t < T_{k+1}) \\
 						&= P(T_k \leq t) - P(T_{k+1} \leq t) \\
 \end{align*}
-	$\{T_1 = X_1\}$ may be interpreted as the rewarded recieved after conducted one bernoulli trail. $X_1 = 1$ if trial fails and $X_1 = 2$ if it succeeds.\\
+	$\{T_1 = X_1\}$ may be interpreted as the rewarded recieved after conducting one bernoulli trail. $X_1 = 1$ if trial fails and $X_1 = 2$ if it succeeds.\\
 	$\{T_n = X_n\}$ may be interpreted as the rewards $n$ recieved after conducting $k$ bernoulli trails, and then we have $n-k$ succeses and $k-(n-k) = 2k-n$ fails. Moreover, the rewards $n$ range from $k$ to $2k$. \\
 	\begin{align*}
 		P(T_k = n)  = {k \choose {n-k}} 0.2^{n-k} 0.8^{2k-n}, n = k, k+1, ..., 2k 
@@ -127,7 +127,7 @@ Then $h(t) = E\big(t(T_1 - t) | T_1 \geq t \big) $, so $h$ is continuous a.e on 
 							 &= \int_{0}^{t}dF(s) -\int_{0}^{t}P\big(\text{ $N(t-s)$ is odd }\big)dF(s) \\
 							 &= F(t) -\int_{0}^{t}P\big(\text{ $N(t-s)$ is odd }\big)dF(s) \\
 \end{align*}
-Let $H(t) = P(N(t) \text{ is odd } )$, then $H(0) = 0$ and $F(t) = 1 -e^{-\lambda t}$ and $dF(s) = \lambda e^{-\lambda s}ds$.
+Let $H(t) = P(N(t) \text{ is odd} )$, then $H(0) = 0$ and $F(t) = 1 -e^{-\lambda t}$ and $dF(s) = \lambda e^{-\lambda s}ds$.
 \begin{align*}
 	H(t) &= F(t)-\int_{0}^{t}H(t-s)dF(s) \\
 			   &= 1 -e^{-\lambda t} - \int_{0}^{t}H(t-s) \lambda e^{-\lambda s}ds \\
@@ -147,7 +147,8 @@ So $H(t) = Ce^{-2\lambda t} + \frac{1}{2}$ is the general form of the solution.\
 Since $H(0) = C+ \frac{1}{2} = 0$, we have $C = -\frac{1}{2}$.\\
 Thus,
 \[ H(t) = -\frac{1}{2}e^{-2\lambda t} + \frac{1}{2}.\]
-
+Namely,
+\[ P(N(t) \text{ is odd} ) = -\frac{1}{2}e^{-2\lambda t} + \frac{1}{2}.\]
 \vspace{5mm}
 
 \noindent \textbf{4.}\\
@@ -241,7 +242,7 @@ Thus,
 		\[E(X_i) = \frac{1}{3}(2+4+6) = 4.\]
 	\item
 		By Wald's equalitiy,
-		\[ E(T)  = E(N)E(X_i) = 3*4 = 12\]
+		\[ E(T)  = E(N)E(X_i) = 3\times 4 = 12\]
 	\item
 		\begin{align*}
 			E\Bigg(\sum_{i=1}^NX_i|N=n\Bigg) &= E\Bigg(\sum_{i=1}^nX_i\Bigg )\\
@@ -276,61 +277,43 @@ So the proportion of time (on the average) the server is busy is $\frac{\mu_G}{\
 
 	\[\lim_{t\to \infty} \frac{R(t)}{t} = \frac{E(R_1)}{E(X_1)},\]
 	and 
-
-	\[E(R_1) = E\big( N(T_1)\big).\]
-
-	Since 
-	\[E\big(N(T_1)|T_1= t\big) = E\big(N(t)\big) = \lambda t,\]
-
-	\[E(R_1) = E\Big(E\big(N(T_1)|T_1\big)\Big) = E(\lambda T_1) = \lambda E(T_1)  \]	
-	So the average number of people who are waiting for a bus
-	\begin{align*}
-		\lim_{t\to \infty} \frac{R(t)}{t} &= \frac{E(R_1)}{E(X_1)}\\
-					 		  	   	  	  &= \frac{\lambda E(T_1)}{E(X_1)}\\
-									  	  & = \lambda
-	\end{align*}
-	\item
-		We construct a discrete time renewal reward process $\{W_n\}_{n\geq 1}$ w.r.t $\{nN\}_{n\geq 1}$, where $N$ is the waiting time of the $n$th passenger, and $N$ is the number of passengers who arrive during the cycles in part (a).\\
-		Then 
-		\[E(N) = \lambda.\]
-	Let the total waiting time between $nN$ and $(n+1)N$ be
-	\[ R_n = \sum_{k=nN+1}^{(n+1)N}W_k, n\geq 1 \]
-	\begin{align*}
-		E(R_n) &= E\Bigg(\sum_{k=nN+1}^{(n+1)N}W_k \Bigg) \\
-		       &= E\Bigg(E\Bigg(\sum_{k=nN+1}^{(n+1)N}W_k | N \Bigg)\Bigg) \\
-	\end{align*}
-	Since 
-	\begin{align*}
-		E\Bigg(\sum_{k=nN+1}^{(n+1)N}W_k | N = m \Bigg) &= E\Bigg(\sum_{k=nm+1}^{(n+1)m}W_k\Bigg)\\
-														&= E\Bigg(\sum_{k=1}^{m}W_k\Bigg)\\
-														&= \sum_{k=1}^{m}E(W_k) \\
-														&=\sum_{k=1}^{m}E\big(E(W_k|T_1)\big)
-	\end{align*}
-	Since 
-	\begin{align*}
-		E(W_k|T_1= t) = t - \frac{k}{\lambda}, 
-	\end{align*}
-	\[E(W_k|T_1) = T_1- \frac{k}{\lambda}.\]
-	So  
-	\begin{align*}
-		E\Bigg(\sum_{k=nN+1}^{(n+1)N}W_k | N = m \Bigg) &= \sum_{k=1}^{m} E\Big(T_1- \frac{k}{\lambda}\Big)\\
-														&= \sum_{k=1}^{m} \Big(E(T_1)- \frac{k}{\lambda}\Big)\\
-														&= mE(T_1) - \frac{m(m+1)}{2\lambda}.
-	\end{align*}
-	Then 
-	\[ E\Bigg(\sum_{k=nN+1}^{(n+1)N}W_k | N \Bigg) = NE(T_1) - \frac{N(N+1)}{2\lambda}  \]
-
+	\[ E\big(R_1|T_1=t, N(T_1)=n\big) = \frac{nt}{2}\]
+	since there are $n$ arrivals by time $t$ and the set of arrival times are distributed as $n$ independent uniform $(0,t)$ random variables, and so the average amount received per passenger is $\frac{t}{2}$.\\
 	Thus, 
 	\begin{align*}
-		E(R_n) &= E\Big(\frac{N-1}{2}\Big)\\
-			   &= \frac{E(N)-1}{2} \\
-			   &= \frac{\lambda-1}{2}
+		E (R_1)  &= E\Big(E\big(R_1|T_1, N(T_1)\big)\Big) \\
+				 &= \frac{1}{2}E\big(T_1N(T_1)\big) \\	
+			    		&= \frac{1}{2}E\Big(E\big(T_1N(T_1) | T_1\big)\Big)\\
+					    &= \frac{1}{2}E\Big(T_1 E\big(N(T_1)|T_1\big)\Big)\\
+						 &= \frac{1}{2}E(T_1 \lambda T_1)\\
+						 &= \frac{\lambda}{2}E(T_1^2)
 	\end{align*}
-
-	Thus, the average amount of time that a passenger waits is 
+	since $N(T_1) \sim Poisson(\lambda T_1)$.\\
+	Therefore, the average number of people who are waiting for a bus is 
 	\begin{align*}
-		\frac{E(R_n)}{E(N)} &= \frac{\lambda-1}{2\lambda}\\
-							&= \frac{1}{2} - \frac{1}{2\lambda}
+	 	\frac{E(R_1)}{E(X_1)} &= \frac{\lambda E(T_1^2)}{2E(T_1)} \\
+	 							&= \frac{\lambda \int_{0}^{\infty} t^2 dF(t)}{2\int_{0}^{\infty} t dF(t)}
+ 	\end{align*}
+	\item
+		We construct a discrete time renewal reward process $\{W_n\}_{n\geq 1}$ w.r.t $\{nN\}_{n\geq 1}$, where $W_n$ is the waiting time of the $n$th passenger, and $N$ is the number of passengers who arrive during the cycles in part (a).\\
+	Let the total waiting time between $nN$ and $(n+1)N$ be
+	\[ R_n = \sum_{k=nN +1}^{(n+1)N}W_k, n\geq 1 \]
+	Then
+	\begin{align*}
+		E(R_1) &= E\Bigg(\sum_{k=n+1}^{N}W_k\Bigg) \\
+			   &= \frac{\lambda}{2}E(T_1^2)
+	\end{align*}
+	by similar process with part (a).
+	\begin{align*}
+		E(N) &= E\big(E(N|T_1)\big)\\
+			 &= E(\lambda T_1) \\
+			 &=\lambda E(T_1)
+	\end{align*}
+	So the average amount of time that a passenger waits is 
+	\begin{align*}
+		\lim_{n\to \infty} \frac{W_1 + ... + W_n}{n} &= \frac{E(R_1)}{E(N)} \\
+									  &=\frac{E(T_1^2)}{2E(T_1)} \\
+									  &=\frac{\lambda \int_{0}^{\infty} t^2 dF(t)}{2\int_{0}^{\infty} t dF(t)}
 	\end{align*}
 
 \end{enumerate}	
