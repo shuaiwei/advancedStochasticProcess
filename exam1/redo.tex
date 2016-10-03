@@ -1,4 +1,4 @@
-\documentclass[12pt]{extarticle}
+\documentclass{extarticle}
 % PACKAGES
 
 \usepackage{amsmath}
@@ -79,9 +79,9 @@
 \begin{enumerate}[(b)]
 	\item
 	\begin{proof}
-	  Let $T_n$ be the $k^{th}$ replacement for $k \geq 1$ and set $T_{0} = 0$.\\
+	  Let $T_n$ be the $n^{th}$ replacement for $n \geq 1$ and set $T_{0} = 0$.\\
 	  Then $\{T_n-T_{n-1}\}_{n=1}^{\infty}$ is an $iid$ sequence of nonnegative random variables.
-		Let $S_1$ be the first in use failure.\\
+		Let $S_1$ be the first in-use failure.\\
 		Let $N = \text{inf}\{n \geq 1: T_{n}-T_{n-1} < T\}$.\\
 	  	Since $\idca(N \leq n) = 1-\idca(N > n) = 1-\idca(T_{1}-T_{0} \geq T, T_{2}-T_{1}> T,...,T_{n}-T_{n-1} \geq T)$, $N$ is a stopping time w.r.t. $\{T_n-T_{n-1}\}_{n=0}^{\infty}$.\\
 	  	Then 
@@ -106,9 +106,233 @@
 	    \[E(N) = F(T)\frac{1}{F^2(T)} = \frac{1}{F(T)}.\]
 	    Thus,the averge time between two successive in-use failures is
 	    \[E(S_1) = E(N)E(T_1) = \frac{\int_0^Txf(x)dx+T\left(1-F(T)\right)}{F(T)}.\]
-
 	\end{proof}
+ \end{enumerate}
+\newpage
+
+
+\noindent \textbf{3.}\\
+\begin{enumerate}
+	\item
+	  Assume $p \neq q$.\\
+	  Let $\{X_n\}$ be the winning of the $n^{th}$ bet for $n \geq 1$.\\
+	  Then for $n \geq 1$, 
+	  \[ X_n = \left\{ 
+	  	  \begin{array}{cc}
+	  	  	1,& \text{ with probability }p;\\
+	  	  	-1,& \text{ with probability }1-p. 
+	  	  \end{array}
+	  	  	\right.
+	  \]
+	  So $\{X_n\}_{n=1}^{\infty}$ is an $iid$ sequence of nonnegative random variables.\\
+	  Then $E(X_n) = p-q$.\\
+	  Let $T=\text{inf}\{n\geq 1: \sum_{k=1}^{n}X_k = N \text{ or } \sum_{k=1}^{n}X_k = 0\}$.\\
+	  Since 
+	  \begin{align*}
+	  	\idca(T \leq n) &= 1- \idca(T > n) \\
+	  					&= 1-\idca(0< \sum_{k=1}^{1}X_k <N, 0< \sum_{k=1}^{2}X_k <N, ..., 0< \sum_{k=1}^{n}X_k <N),
+	  \end{align*}
+	  $T$ is a stopping time w.r.t $\{\sum_{k=1}^{n}X_k\}_{n=1}^{\infty}$.\\
+	  Let $Y$ be the final winning of the gambler when he stops.\\
+	  So given the initial fortune $i$ \$, 
+	  \[ Y = \left\{ 
+	  	  \begin{array}{cc}
+	  	  	N-i,& \text{ with probability } P_i = \frac{1-(q/p)^i}{1-(q/p)^N};\\
+	  	  	-i,& \text{ with probability } 1-P_i = \frac{(q/p)^i-(q/p)^N}{1-(q/p)^N}. 
+	  	  \end{array}
+	  	  	\right.
+	  \]
+	  So 
+	  \begin{align*}
+  			E\left( \sum_{n=1}^{T}X_n\right) = E(Y) = (N-i)P_i -i(1-P_i).
+	  \end{align*}
+	  By Wald's identity, we also have
+	  \[E\left( \sum_{n=1}^{T}X_n\right) = E(T)E(X_1) = (p-q)E(T).\]
+	 Thus,
+	 \[E(T) = \frac{(N-i)P_i -i(1-P_i)}{p-q}.\]
+	\item
+		Assume $p=q$.\\
+	  	Let $E_i(T)$ be $E(T)$ when given initial fortune is $i$ \$.\\
+	  	Then 
+	  	\begin{align*}
+	  	  E_i(T) &= E\left(E_i(T|X_1)\right) \\
+	  	  		 &= E{T|X_1 = 1} \frac{1}{2} + E{T|X_1 = -1} \frac{1}{2} \\
+	  	  		 &=\frac{1}{2}\left(1+E_{i+1}(T)\right) + \frac{1}{2}\left(1+E_{i-1}(T)\right)\\
+	  	  		 &=1+\frac{1}{2}E_{i+1}(T) + \frac{1}{2}E_{i-1}(T)		
+	  	\end{align*} 
+		Let $d_i = E_i(T) - E_{i-1}(T)$.\\
+		Then $d_{i+1} = d_i - 2$.\\
+		We can find that 
+		\begin{align*}
+		  \left( \begin{array}{c}
+		  	d_{i+1} \\
+		  	-2
+		  \end{array}
+		  \right)
+		   &= 
+		  \left( 
+		  		\begin{array}{cc}
+		  		  1& 1 \\
+		  		  0& 1
+		  		\end{array}
+		  \right)
+		  \left( \begin{array}{c}
+		  	d_{i} \\
+		  	-2
+		  \end{array}
+		  \right) \\
+		  &= 
+		  \left( 
+		  		\begin{array}{cc}
+		  		  1& 1 \\
+		  		  0& 1
+		  		\end{array}
+		  \right)^2
+		  \left( \begin{array}{c}
+		  	d_{i-1} \\
+		  	-2
+		  \end{array}
+			\right) \\
+		&= \ldots \\
+		&=
+		  \left( 
+		  		\begin{array}{cc}
+		  		  1& 1 \\
+		  		  0& 1
+		  		\end{array}
+		  	  \right)^{i}
+		  \left( \begin{array}{c}
+		  	d_{1} \\
+			-2
+		  \end{array}
+		\right) 
+		\end{align*}
+	We claim 
+	\begin{align*}
+		\left( 
+		  		\begin{array}{cc}
+		  		  1& 1 \\
+		  		  0& 1
+		  		\end{array}
+		  \right)^i
+		  =
+		 \left( 
+		  		\begin{array}{cc}
+		  		  1& i \\
+		  		  0& 1
+		  		\end{array}
+		  \right).
+	\end{align*}
+	Basic case:
+	\begin{align*}
+		 \left( 
+		  		\begin{array}{cc}
+		  		  1& 1 \\
+		  		  0& 1
+		  		\end{array}
+		  \right)^2 
+		  =
+		 \left( 
+		  		\begin{array}{cc}
+		  		  1& 2 \\
+		  		  0& 1
+		  		\end{array}
+		  \right) 
+	\end{align*}
+	Assume
+	\begin{align*}
+		\left( 
+		  		\begin{array}{cc}
+		  		  1& 1 \\
+		  		  0& 1
+		  		\end{array}
+		  \right)^i
+		  =
+		 \left( 
+		  		\begin{array}{cc}
+		  		  1& i \\
+		  		  0& 1
+		  		\end{array}
+		  \right)
+	\end{align*}
+	Then 
+	\begin{align*}
+		\left( 
+		  		\begin{array}{cc}
+		  		  1& 1 \\
+		  		  0& 1
+		  		\end{array}
+		  	  \right)^{i+1}
+		 & =
+		\left( 
+		  		\begin{array}{cc}
+		  		  1& 1 \\
+		  		  0& 1
+		  		\end{array}
+		  	  \right)^i
+		\left( 
+		  		\begin{array}{cc}
+		  		  1& 1 \\
+		  		  0& 1
+		  		\end{array}
+		 \right) \\
+		 &=
+		 \left( 
+		  		\begin{array}{cc}
+		  		  1& i+1 \\
+		  		  0& 1
+		  		\end{array}
+		  \right).
+	\end{align*}
+	So the claim holds.
+	Then we get \\
+		\begin{align*}
+		  \left( \begin{array}{c}
+		  	d_{i+1} \\
+		  	-2
+		  \end{array}
+		  \right)
+		   &= 
+		  \left( 
+		  		\begin{array}{cc}
+		  		  1& i \\
+		  		  0& 1
+		  		\end{array}
+		  \right)
+		  \left( \begin{array}{c}
+		  	d_{1} \\
+		  	-2
+		  \end{array}
+		\right)
+		\end{align*}
+		So 
+		\[d_{i+1} = d_1 -2 i.\]
+		So
+		\[ d_{N} = d_1-2(N-1).\]
+		We know $d_1 = E_1(T)-E_0(T) = E_1(T)$, and \\
+		$d_{N} = E_N(T)-E_{N-1}(T) = -E_{N-1}(T)$.
+		Since $p=q$, by symmetry, we have 
+		\[E_1(T) = E_{N-1}(T).\]
+		So 
+		\[d_N = -d_1.\]
+		Combine it with $d_{N} = d_1-2(N-1)$, we have
+		\[d_1 = N-1.\]
+		Then 
+		\[d_i = d_1 - 2(i-1) = N-2i+1.\]
+		As a result, given intial fortune $i$ \$, we have 
+		\begin{align*}
+		  E_{T}=E_i(T) &= d_i+E_{i-1}^T \\
+		  		 &= d_i + d_{i-1} + E_{i-2}^T \\
+		  		 &=\ldots \\
+				 &=d_i + d_{i-1} + \ldots + d_{1}+E_{0}^T\\
+		  		 &= (N-2i+1) + \left(N-2(i-1)+1\right) + \ldots + N-1 + 0\\
+		  		 &= Ni-i^2.
+		\end{align*}
 \end{enumerate}
+
+\newpage
+
+\noindent \text{4.}
 
 \end{document}
 
