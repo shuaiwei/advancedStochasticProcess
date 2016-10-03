@@ -156,7 +156,7 @@
 	  	Then 
 	  	\begin{align*}
 	  	  E_i(T) &= E\left(E_i(T|X_1)\right) \\
-	  	  		 &= E{T|X_1 = 1} \frac{1}{2} + E{T|X_1 = -1} \frac{1}{2} \\
+	  	  		 &= E(T|X_1 = 1) \frac{1}{2} + E(T|X_1 = -1)\frac{1}{2} \\
 	  	  		 &=\frac{1}{2}\left(1+E_{i+1}(T)\right) + \frac{1}{2}\left(1+E_{i-1}(T)\right)\\
 	  	  		 &=1+\frac{1}{2}E_{i+1}(T) + \frac{1}{2}E_{i-1}(T)		
 	  	\end{align*} 
@@ -333,7 +333,57 @@
 \newpage
 
 \noindent \text{4.}
-
+Consider the regenerating process w.r.t. the arrival times of the train.\\
+For $n \geq 1$, let $T_n$ be the arrival time of the $n^{th}$ customer.\\
+Then the interrenewals $\{T_{n}-T_{n-1}\}$ is a $iid$ sequence of nonnegative random variables.\\ 
+Besides, we know $\left(T_{n}-T_{n-1}\right) \sim exp(\lambda)$ for $n \geq 1$, so $E(1) = \frac{1}{\lambda}.$\\
+Since 
+\[T_N = \sum_{n=1}^N \left(T_{n}-T_{n-1}\right),\]
+\[E(T_N) = \sum_{n=1}^NE\left(T_{n}-T_{n-1}\right) = NE(T_{1}) = \frac{N}{\lambda}.\] 
+Let $\tau_1$ be the first arrival time of the train.\\
+Then $\tau_1 = T_N + K$. \\
+So \[ E(\tau_1) = E(T_N + K) = \frac{N}{\lambda}  + K. \]
+Suppose each customer pays us money at a rate of $c$ per unit time.\\
+So at $T_N$, the $n^{th}$ customer will pay us $c(T_N-T_n)$ for $1 \leq n \leq N$.\\
+Let $R_1$ be the reward earned when between time 0 and $T_N$.\\
+Then 
+\[R_1 = \sum_{n=1}^{N}c(T_N-T_n).\]
+Since for $1 \leq n \leq N$,
+\[ E(T_N-T_n)  = E(T_{N-n}) = \frac{N-n}{\lambda},\]
+\[E(R_1) = c\sum_{n=1}^{N}E(T_N-T_n) = c\sum_{n=1}^N \frac{N-n}{\lambda} = \frac{c}{2\lambda}N(N-1).\]
+Let $R_2$ be the reward earned between $T_N$ and $\tau_1$.\\
+Then 
+\[R_2 = cNK + \sum_{l=1}^{N(K)}c(K-T_l).\]
+Since given $N(K) = n$ for $n \in \bbn$, we have $T_{l} \sim $ Uniform$(0, K)$ for $1 \leq l \leq n$,\\
+\[E\left(T_l\right) = \int_{0}^K x \frac{1}{K} dx = \frac{K}{2}.\]
+So
+\begin{align*}
+	E\left(\sum_{l=1}^{N(K)}c(K-T_l) \mid N(K) =n \right) &= E\left(\sum_{l=1}^{n}c(K-T_l) \right) \\
+  								&= c\sum_{l=1}^nE(K-T_l) \\
+  								&= c\sum_{l=1}^n\left(K-E(T_l)\right)\\
+  								&= cKn-c\sum_{l=1}^nE(T_l) \\
+  								& = cKn-c\sum_{l=1}^n \frac{K}{2} \\
+  								&= \frac{cKn}{2}
+\end{align*}
+Thus,
+\begin{align*}
+  E\left(\sum_{l=1}^{N(K)}c(K-T_l)\right) &= E\left( E\left(\sum_{l=1}^{N(K)}c(K-T_l) \mid N(K) =n \right)\right)\\
+  										&= E\left(\frac{cKN(K)}{2} \right)\\
+ 			 							&= \frac{cK}{2}E\left(N(K)\right) \\
+  										&= \frac{cK}{2} \lambda K \\
+  									    &= \frac{c\lambda K^2}{2}
+\end{align*}
+since given $K$, $N(K)\sim$Poisson$(\lambda K)$.
+So
+\[E(R_2) = cNK + E\left( \sum_{l=1}^{N(K)}c(K-T_l) \right) = cNK + \frac{c\lambda K^2}{2}.\]
+Since the total cost during the first cycle $\tau_1$ is 
+\[C_1 = R_1 + R_2,\]
+\[E(C_1) = E(R_1) + E(R_2) = \frac{c}{2\lambda}N(N-1) + cNK + \frac{c\lambda K^2}{2}.\]
+As a result, the long-run average cost per unit time is 
+\begin{align*}
+	\frac{E(C_1)}{E(\tau_1)} &= \frac{\frac{c}{2\lambda}N(N-1) + cNK + \frac{c\lambda K^2}{2}}{\frac{N}{\lambda}  + K}\\
+  							 &= \frac{cN(N-1) + 2c\lambda NK + c\lambda^2 K^2}{2N + 2\lambda K}.
+\end{align*}
 \end{document}
 
 
