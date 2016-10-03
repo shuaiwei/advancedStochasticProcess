@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  20 SEP 2016 12:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  26 SEP 2016 01:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**HW1.tex
-(./HW1.tex
+**HW2.tex
+(./HW2.tex
 LaTeX2e <2016/03/31>
 Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amscls/amsart.cls
@@ -357,8 +357,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 \c@intthm=\count120
 \c@step=\count121
 
-(./HW1.aux)
-\openout1 = `HW1.aux'.
+(./HW2.aux)
+\openout1 = `HW2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
 LaTeX Font Info:    ... okay on input line 65.
@@ -402,97 +402,47 @@ LaTeX Info: Redefining \ref on input line 65.
 LaTeX Info: Redefining \pageref on input line 65.
 LaTeX Info: Redefining \nameref on input line 65.
 
-(./HW1.out) (./HW1.out)
+(./HW2.out) (./HW2.out)
 \@outlinefile=\write4
-\openout4 = `HW1.out'.
+\openout4 = `HW2.out'.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 67--73
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 79--82
-
- []
-
-
-Package amsmath Warning: Foreign command \atopwithdelims;
-(amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 84.
-
-
-Overfull \hbox (54.68466pt too wide) in paragraph at lines 89--89
-[] 
- []
-
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 113.
 [1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 113.
 
- [2]
-Underfull \hbox (badness 10000) in paragraph at lines 135--137
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 154--156
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 158--159
-
- []
-
-
-Underfull \vbox (badness 5119) has occurred while \output is active []
-
- [3]
-[4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 219--221
-
- []
-
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 251--254
-
- []
-
-[7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 321.
- [8]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 321.
- (./HW1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 321.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 321.
-Package rerunfilecheck Info: File `HW1.out' has not changed.
+(./HW2.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 113.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 113.
+Package rerunfilecheck Info: File `HW2.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 321.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 113.
  ) 
 Here is how much of TeX's memory you used:
- 8489 strings out of 493014
- 114040 string characters out of 6133351
- 250776 words of memory out of 5000000
- 11755 multiletter control sequences out of 15000+600000
- 11562 words of font info for 50 fonts, out of 8000000 for 9000
+ 8472 strings out of 493014
+ 113929 string characters out of 6133351
+ 240776 words of memory out of 5000000
+ 11754 multiletter control sequences out of 15000+600000
+ 11216 words of font info for 49 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 34i,13n,28p,3235b,484s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,7n,28p,3235b,334s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></u
 sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr
 /local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/l
-ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/loca
-l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/t
-exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
-xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texl
-ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texli
-ve/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on HW1.pdf (8 pages, 147209 bytes).
+ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loca
+l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
+/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on HW2.pdf (1 page, 89252 bytes).
 PDF statistics:
- 102 PDF objects out of 1000 (max. 8388607)
- 79 compressed objects within 1 object stream
- 17 named destinations out of 1000 (max. 500000)
+ 49 PDF objects out of 1000 (max. 8388607)
+ 36 compressed objects within 1 object stream
+ 2 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

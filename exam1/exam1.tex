@@ -1,0 +1,119 @@
+\documentclass{amsart}
+
+% PACKAGES
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb,enumerate}
+\usepackage{amsthm,stmaryrd}
+\usepackage[all]{xy}
+\usepackage{hyperref}
+
+%\theoremstyle{definition}
+%\newtheorem{exer}{Exercise}
+\newcommand{\llll}{\mathcal{L}}
+\newcommand{\bbr}{\mathbb{R}}
+\newcommand{\bbc}{\mathbb{C}}
+\newcommand{\bbz}{\mathbb{Z}}
+\newcommand{\bbq}{\mathbb{Q}}
+\newcommand{\bbn}{\mathbb{N}}
+\newcommand{\be}{\mathbf{e}}
+\newcommand{\ba}{\mathbf{a}}
+\newcommand{\fm}{\mathfrak{m}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\renewcommand{\ker}{\operatorname{Ker}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\xra}{\xrightarrow}
+\newcommand{\wti}{\widetilde}
+
+\theoremstyle{plain}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}[lem]{Corollary}
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{thm}[lem]{Theorem}
+\newtheorem{conj}[lem]{Conjecture}
+\newtheorem{intthm}{Theorem}
+\renewcommand{\theintthm}{\Alph{intthm}}
+
+\theoremstyle{definition}
+\newtheorem{defn}[lem]{Definition}
+\newtheorem{ex}[lem]{Example}
+\newtheorem{question}[lem]{Question}
+\newtheorem{questions}[lem]{Questions}
+\newtheorem{problem}[lem]{Problem}
+\newtheorem{disc}[lem]{Remark}
+\newtheorem{rmk}[lem]{Remark}
+\newtheorem{construction}[lem]{Construction}
+\newtheorem{notn}[lem]{Notation}
+\newtheorem{fact}[lem]{Fact}
+\newtheorem{para}[lem]{}
+\newtheorem{exer}[lem]{Exercise}
+\newtheorem{remarkdefinition}[lem]{Remark/Definition}
+\newtheorem{notation}[lem]{Notation}
+\newtheorem{step}{Step}
+\newtheorem{convention}[lem]{Convention}
+\newtheorem*{Convention}{Convention}
+\newtheorem{assumption}[lem]{Assumption}
+
+\newcommand{\fmn}{F^{m\times n}}
+\newcommand{\fnn}{F^{n\times n}}
+\newcommand{\col}{\operatorname{Col}}
+\newcommand{\row}{\operatorname{Row}}
+\newcommand{\Span}{\operatorname{Span}}	
+\newcommand{\rank}{\operatorname{rank}}	
+
+\begin{document}	
+	\[P(N(t)= n) = P(T_n \leq t < T_{n+1}) = P(T_n \leq t ) - P(T_{n+1} \leq t) \]  
+  	\[E(N(t)) = \sum_{n=0}^{\infty} P(N(t) >n)= \sum_{n=1}^{\infty} P(N(t) \geq n) = \sum_{n=1}^{\infty}P(T_n \leq t)\]
+	\[N(t) = \sum_{n=1}^{\infty}1_{\{T_n \leq t\}}  = max\{n:T_n \leq t\}.\]
+	By \textbf{SLLN}, 
+	\[ \lim_{n\to \infty} \frac{T_n}{n} = \lim_{n\to \infty}\frac{\sum_{k=1}^nX_k}{n} = E(X_1)\]
+	so $\lim_{n\to \infty} T_n = \infty, w.p.1$ if $E(X_1) > 0$\\
+	Usually, we consider $\lim_{n\to \infty} T_n(\omega) = \infty$ but $T_n(\omega) < \infty$ for each $n$. \\
+	Then for a real number $\mu > 0$, $\lim_{n\to \infty}\frac{T_n}{n} = \frac{1}{\mu}$, $w.p.1$ if and only if $\lim_{t\to \infty}\frac{N(t)}{t} = \mu$. proof: using $T_{N(t)} \leq t \leq T_{N(t)+1}$ and $n=N(T_n)$\\
+	\textbf{Reward}: Assume at time $T_n$, we earn a reward $R_n$(from $T_{n-1}$ to $T_n$). $\lim_{t\to \infty}\frac{R(t)}{t} = \frac{E(R_1)}{E(X_1)}\ w.p.1$, where $R(t) = R(T_{N(t)})=  \sum_{n=1}^{N(t)}R_n$.\\
+	\[lim_{n\to \infty} \frac{R(T_n)}{T_n} = lim_{n\to \infty} \frac{\sum_{k=1}^{n}R_k}{T_n} = \frac{E(R_1)}{E(X_1)}, w.p.1\]
+	and use 
+	\[ \frac{R(T_{N(t)})}{T_{N(t)+1}} \leq \frac{R(t)}{t} \leq \frac{R(T_{N(t)})}{T_{N(t)}}\]
+	\textbf{Age}: Let $A(t) = t-T_{N(t)}$, then $R_n = \int_{T_{n-1}}^{T_n} 1_{(A(s) \leq x)ds} = \text{min}(X_n,x)$ and $\lim_{t\to \infty}\frac{1}{t}\int_{0}^t1_{(A(s) \leq x)} ds  = \frac{\int_{0}^x P(x_1 > y)dy}{E(X_1)}$ \\
+	\textbf{Elementary renewal thm}: \[ \lim_{t\to \infty} \frac{E(N(t))}{t} = \frac{1}{E(X_1)}\]
+	By \textbf{Wald's identity}, we have 
+	\[E(T_{N(t)+1} = E(N(t)+1)E(X_1))\]
+	since $N(t)+1$ is a stopping time by showing $1_{N(t) + 1}$ corresponding to $x_1,...,x_n$.\\
+	Renewal equation: $h$ is real-valued function satisfying $h(t)= 0$ for $t < 0$, $F$ is cdf on $\bbr$ satisfying $F(t)= 0$ for $t < 0$. Then the equation is given by 
+	\[ H(t) = h(t) + \int_{[0,t]}H(t-s)dF(s), t\geq 0\]
+Example:
+\[M(t) = E(N(t)) = E(E(N(t)|X_1)) = \int_{0}^{\infty}E(N(t)|X_1=s)dF(s)\]
+Sol: we assume $h$ is bounded on finite subintervals.\\
+Then it has a unique solution $u*h$, where $u(t) = \sum_{n=0}^{\infty}F^n(t)$, where $u(t) = 0,t \leq 0$.\\
+Let $F^0(t) = 1_{(t \geq 0)}$, then we have $mu(t) = 1+ E(N(t))$. $\mu$ is often referred to as the renewal function.\\
+\textbf{Blackwell's Thm} 
+\[ lim_{t\to \infty}[u(t+s)-u(t)] = \frac{s}{E(X_1)} \]
+\textbf{key renewal thm} $F$ is nonarithmetic cdf that has a finite mean and suppose $h$ is a directly Riemann integrable fcn on $\left.\left[0, \infty\right)\right.$.
+\[lim_{t\to \infty} u*h(t) = \frac{\int_{0}^{\infty}h(s)ds}{E(X_1)} \]
+\textbf{Appplication of key renewal thm} 
+\begin{enumerate}[(a)]
+  \item
+	show $H$ is a solution that is bounded on finite intervals and satisfies the reneqal equation.
+  \item
+	check to see $F$ is nonarithmetic and $h$ is directly Riemann integrable on $\left.\left[0, \infty\right)\right.$. 
+  \item if all the above conditions are satisfied, then 
+	\[\lim_{t\to \infty} = \frac{\int_0^{\infty}h(s)ds}{\int_0^{\infty}xdF(x)} = \frac{\int_0^{\infty}h(s)ds}{E(X)}\]
+  \end{enumerate}
+\textbf{DRI} necessary condition: $h$ bounded and continous a.e $w.r.t$ lebesgue measure. \\
+Sufficient conditions: 
+\begin{enumerate}
+  \item
+	$h$ is nonnegative and nonincreasing and Reimann integrable on $\left.\left[0, \infty\right)\right.$.
+  \item 
+	$h$ is nonnegative and Riemann integrable on $[0,a]$ for each $a>0$, and $\int_{0}^{\infty}\bar{h}_{\delta}dt < \infty$ for some $\delta > 0$, where 
+	\[\bar{h}_{\delta}dt = \sum_{n=1}^{\infty}\Big[\sup_{(n-1)\delta \leq t < n\delta} h(t)\Big] 1_{(n-1)\delta \leq t < n\delta}\]
+  \item 
+	$h$ is continous a.e on $\left.\left[0, \infty\right)\right.$, and there exists a fcn $b(t)$ s.t $|h(t)| \leq b(t), t\geq 0$ with $b$ being dRi.
+  \end{enumerate}
+\textbf{Regenerate processes} w.r.s $\{\tau_n\}$.Then
+\[lim_{t\to \infty}P(X(t) \leq x) = \frac{E\Big(\int_{0}^{\tau_1}1_{(X(s) \leq x)ds}\Big)}{E(\tau_1)}\]
+\textbf{Stationary processes} A delayed renewal process $\{N(t)\}$ is said to be stationary iff the initial arrival times has the following dist fcn 
+\[G(t)= \frac{1}{E(X_1)}\int_{0}^{t}(1-F(s))ds\]
+
+\end{document}

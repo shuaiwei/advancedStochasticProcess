@@ -1,0 +1,115 @@
+\documentclass[12pt]{extarticle}
+% PACKAGES
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb,enumerate}
+\usepackage{amsthm,stmaryrd}
+\usepackage[all]{xy}
+\usepackage{hyperref}
+
+%\theoremstyle{definition}
+%\newtheorem{exer}{Exercise}
+\usepackage{bbold}
+\newcommand{\idca}{\mathbb{1}}
+\newcommand{\llll}{\mathcal{L}}
+\newcommand{\bbr}{\mathbb{R}}
+\newcommand{\bbc}{\mathbb{C}}
+\newcommand{\bbz}{\mathbb{Z}}
+\newcommand{\bbq}{\mathbb{Q}}
+\newcommand{\bbn}{\mathbb{N}}
+\newcommand{\be}{\mathbf{e}}
+\newcommand{\ba}{\mathbf{a}}
+\newcommand{\fm}{\mathfrak{m}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\renewcommand{\ker}{\operatorname{Ker}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\xra}{\xrightarrow}
+\newcommand{\wti}{\widetilde}
+
+\theoremstyle{plain}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}[lem]{Corollary}
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{thm}[lem]{Theorem}
+\newtheorem{conj}[lem]{Conjecture}
+\newtheorem{intthm}{Theorem}
+\renewcommand{\theintthm}{\Alph{intthm}}
+
+\theoremstyle{definition}
+\newtheorem{defn}[lem]{Definition}
+\newtheorem{ex}[lem]{Example}
+\newtheorem{question}[lem]{Question}
+\newtheorem{questions}[lem]{Questions}
+\newtheorem{problem}[lem]{Problem}
+\newtheorem{disc}[lem]{Remark}
+\newtheorem{rmk}[lem]{Remark}
+\newtheorem{construction}[lem]{Construction}
+\newtheorem{notn}[lem]{Notation}
+\newtheorem{fact}[lem]{Fact}
+\newtheorem{para}[lem]{}
+\newtheorem{exer}[lem]{Exercise}
+\newtheorem{remarkdefinition}[lem]{Remark/Definition}
+\newtheorem{notation}[lem]{Notation}
+\newtheorem{step}{Step}
+\newtheorem{convention}[lem]{Convention}
+\newtheorem*{Convention}{Convention}
+\newtheorem{assumption}[lem]{Assumption}
+
+\newcommand{\fmn}{F^{m\times n}}
+\newcommand{\fnn}{F^{n\times n}}
+\newcommand{\col}{\operatorname{Col}}
+\newcommand{\row}{\operatorname{Row}}
+\newcommand{\Span}{\operatorname{Span}}	
+\newcommand{\rank}{\operatorname{rank}}	
+
+\usepackage{setspace}
+
+\doublespacing
+
+\begin{document}
+
+\begin{center}
+    \textbf{Homework 4, MATH 8010}
+
+	Shuai Wei 
+\end{center}
+
+\noindent \textbf{2.} \\
+\begin{enumerate}[(b)]
+	\item
+	\begin{proof}
+	  Let $T_n$ be the $k^{th}$ replacement for $k \geq 1$ and set $T_{0} = 0$.\\
+	  Then $\{T_n-T_{n-1}\}_{n=1}^{\infty}$ is an $iid$ sequence of nonnegative random variables.
+		Let $S_1$ be the first in use failure.\\
+		Let $N = \text{inf}\{n \geq 1: T_{n}-T_{n-1} < T\}$.\\
+	  	Since $\idca(N \leq n) = 1-\idca(N > n) = 1-\idca(T_{1}-T_{0} \geq T, T_{2}-T_{1}> T,...,T_{n}-T_{n-1} \geq T)$, $N$ is a stopping time w.r.t. $\{T_n-T_{n-1}\}_{n=0}^{\infty}$.\\
+	  	Then 
+	  	\[S_1 = \sum_{n=1}^{N}(T_n-T_{n-1}).\]
+	  	By Wald's identity, we have 
+	  	\[E(S_1) = E(N)E(T_1).\]
+		Since for $n \in \bbn$, 
+		\begin{align*}
+		  P(N=n) &=P(T_n-T_{n-1} < T)\prod_{k=1}^{n-1}P(T_k-T_{k-1} \geq T) \\
+				 	&=P(T_1 < T)\prod_{k=1}^{n-1}P(T_1 \geq T) \\
+		  			&=F(T)\left(1-F(T)\right)^{n-1}, 
+	  	\end{align*}
+		\[E(N) = \sum_{n=1}^{\infty}nP(N=n) = F(T)\sum_{n=1}^{\infty}n\left(1-F(T)\right)^{n-1}. \]
+		We know the Maclaurin series of $\frac{1}{(1-x)^2}$ is 
+		\[ \sum_{n=1}^{\infty}nx^{n-1}\] 
+		for $-1 < x < 1$.\\
+	    The density $f$ is continuous on $(0,\infty)$, so $0 < F(T) < 1$ for $T \in \bbr^+$.\\
+	    Then we have $0 < 1-F(T) < 1$.\\
+	    So, replace $x$ with $1-F(T)$, we have 
+	    \[ \sum_{n=1}^{\infty}n\left(1-F(T)\right)^{n-1} = \frac{1}{1-\left(1-F(T)\right)^2} = \frac{1}{F^2(T)}. \] 
+		Then 
+	    \[E(N) = F(T)\frac{1}{F^2(T)} = \frac{1}{F(T)}.\]
+	    Thus,the averge time between two successive in-use failures is
+	    \[E(S_1) = E(N)E(T_1) = \frac{\int_0^Txf(x)dx+T\left(1-F(T)\right)}{F(T)}.\]
+
+	\end{proof}
+\end{enumerate}
+
+\end{document}
+
+

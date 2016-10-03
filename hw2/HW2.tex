@@ -1,0 +1,113 @@
+\documentclass{amsart}
+
+% PACKAGES
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb,enumerate}
+\usepackage{amsthm,stmaryrd}
+\usepackage[all]{xy}
+\usepackage{hyperref}
+
+%\theoremstyle{definition}
+%\newtheorem{exer}{Exercise}
+\newcommand{\llll}{\mathcal{L}}
+\newcommand{\bbr}{\mathbb{R}}
+\newcommand{\bbc}{\mathbb{C}}
+\newcommand{\bbz}{\mathbb{Z}}
+\newcommand{\bbq}{\mathbb{Q}}
+\newcommand{\bbn}{\mathbb{N}}
+\newcommand{\be}{\mathbf{e}}
+\newcommand{\ba}{\mathbf{a}}
+\newcommand{\fm}{\mathfrak{m}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\renewcommand{\ker}{\operatorname{Ker}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\xra}{\xrightarrow}
+\newcommand{\wti}{\widetilde}
+
+\theoremstyle{plain}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}[lem]{Corollary}
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{thm}[lem]{Theorem}
+\newtheorem{conj}[lem]{Conjecture}
+\newtheorem{intthm}{Theorem}
+\renewcommand{\theintthm}{\Alph{intthm}}
+
+\theoremstyle{definition}
+\newtheorem{defn}[lem]{Definition}
+\newtheorem{ex}[lem]{Example}
+\newtheorem{question}[lem]{Question}
+\newtheorem{questions}[lem]{Questions}
+\newtheorem{problem}[lem]{Problem}
+\newtheorem{disc}[lem]{Remark}
+\newtheorem{rmk}[lem]{Remark}
+\newtheorem{construction}[lem]{Construction}
+\newtheorem{notn}[lem]{Notation}
+\newtheorem{fact}[lem]{Fact}
+\newtheorem{para}[lem]{}
+\newtheorem{exer}[lem]{Exercise}
+\newtheorem{remarkdefinition}[lem]{Remark/Definition}
+\newtheorem{notation}[lem]{Notation}
+\newtheorem{step}{Step}
+\newtheorem{convention}[lem]{Convention}
+\newtheorem*{Convention}{Convention}
+\newtheorem{assumption}[lem]{Assumption}
+
+\newcommand{\fmn}{F^{m\times n}}
+\newcommand{\fnn}{F^{n\times n}}
+\newcommand{\col}{\operatorname{Col}}
+\newcommand{\row}{\operatorname{Row}}
+\newcommand{\Span}{\operatorname{Span}}	
+\newcommand{\rank}{\operatorname{rank}}	
+
+\begin{document}
+
+\noindent MATH 8170,  \\
+Fall 2016\\
+HW 2\\
+Shuai Wei \\
+\
+\textwidth 6.0in \oddsidemargin 0.0in
+
+\noindent \textbf{1.} 
+Let $X_A(t)$ denote the number of organisms in state A at time $t$.\\
+Let $X_B(t)$ denote the number of organisms in state B.\\
+Then $X = \{X_A, X_B\}$ is a CTMC with sojourn time rate $\upsilon_{ij} = \alpha i + \beta j$ for state $(i,j)$. \\
+The state space is 
+\[E = \{(i,j)\}_{i,j\geq 0,i +j \geq 1} ,\]
+where $i,j \geq 0$ and $i+j \geq 1 $.\\
+The sojourn time $T_{ij}$ for the state $(i,j)$ is exponentially distributed with rate $\alpha i + \beta j$.\\
+The transition probability is :
+\[ P_{(i,j)(i+2,j-1)} = \frac{\beta j}{\alpha i + \beta j}; \]
+\[ P_{(i,j)(i-1,j+1)} = \frac{\alpha i}{\alpha i + \beta j}; \]
+
+\vspace{3mm}
+
+\noindent \textbf{2.}
+Let $X(t)$ denote the number of customers in the system at time $t$. \\
+The time until the next entering/birth $\sim exp(\lambda \alpha_i)$.\\
+The time until the next service ending/death $Y \sim exp(\mu)$.\\
+The birth rate $\lambda \alpha_i $, the death rate is $\mu$.\\
+Then $X(t)$ is a CTMC with sojourn time rate $\upsilon_i = \mu+ \lambda \alpha_i$ for state $i$.\\
+Since it can only change its state by increasing by one or decreasing by one, it is a birth and death procee.\\
+The state space is
+\[ E= \{0,1,2,3,...\}\]
+The transition probability is :
+\[ 
+  	P_{ij}  =  \left\{ 
+					\begin{array}{ll}
+  					  P(X<Y), & j = i+1, i\geq 1 \\ 
+					  P(Y<X),& j = i-1, i\geq 1  
+					\end{array}
+			 	  \right. 
+  	           =  \left\{ 
+					\begin{array}{ll}
+  					  \frac{\lambda \alpha_i}{\mu + \lambda \alpha_i}, & j = i+1, i\geq 1 \\ 
+					  \frac{\mu}{\mu+\lambda\alpha_i},& j = i-1, i\geq 1  
+					\end{array}
+			 	  \right. 
+\]
+When $i = 0$, $P_{01} = 1$.
+\end{document}
