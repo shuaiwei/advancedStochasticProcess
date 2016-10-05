@@ -89,7 +89,7 @@ The transition probability is :
 \[ P_{(i,j)(i+2,j-1)} = \frac{\beta j}{\alpha i + \beta j}; \]
 \[ P_{(i,j)(i-1,j+1)} = \frac{\alpha i}{\alpha i + \beta j}; \]
 
-\vspace{3mm}
+\newpage
 
 \noindent \textbf{2.}\\
 Let $X(t)$ denote the number of customers in the system at time $t$. \\
@@ -117,7 +117,7 @@ The transition probability is :
 \]
 When $i = 0$, $P_{01} = 1$.
 
-\vspace{3mm}
+\newpage
 
 \noindent \textbf{3.}\\
 Yes, it is a CTMC.\\
@@ -138,6 +138,7 @@ For $k \leq i < N$,
 \end{align*}
 If the system enters the state $N$, it will stay there forever.
 
+\newpage
 
 \noindent \textbf{4.}\\
 Define a CTMC with $E = \{0,1,2,3\}$.\\
@@ -187,7 +188,7 @@ Thus, the transition rate matrix is
 \[
     Q= \kbordermatrix{
     	& 0 & 1 & 2 & 3 \\
-   	  0 & -(\lambda_1 + \lambda_2) & \lambda_1 & 0 & \lambda_2  \\
+   	  0 & -(\lambda_1 + \lambda_2) & \lambda_1 & \lambda_2 & 0  \\
       1 &  \mu_1 & -(\mu_1 + \lambda_2) & 0 & \lambda_2  \\
       2 & \mu_2 & 0 & -(\lambda_1 + \mu_2) & \lambda_1  \\
       3 & 0 & \mu_2 & \mu_1 & -(\mu_1 + \mu_2)  \\
@@ -214,48 +215,105 @@ P^1_{ro}(t) = \frac{\mu_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e
 In addtion, we have the similar result for the machine $2$.\\
 Since the machines act independently of each other,\\
 we have
+\[P_{00}(t) = P^1_{oo}(t)P^2_{oo}(t) = \left(\frac{\mu_1}{\lambda_1 + \mu_1} + \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right) 
+  \left(\frac{\mu_2}{\lambda_2 + \mu_2} + \frac{\lambda_2}{\lambda_2+ \mu_2}e^{-(\lambda_2 + \mu_2)t}\right),
+\]
 \[P_{01}(t) = P^1_{or}(t)P^2_{oo}(t) = \left(\frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right) \left(\frac{\mu_2}{\lambda_2 + \mu_2} + \frac{\lambda_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right), \]
 \[P_{02}(t) = P^1_{oo}(t)P^2_{or}(t) = \left(\frac{\mu_1}{\lambda_1 + \mu_1} + \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t} \right)\left(\frac{\lambda_2}{\lambda_2 + \mu_2} - \frac{\lambda_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right),
 \]
+\[P_{03}(t) = P^1_{or}(t)P^2_{or}(t) =\left(\frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right)
+\left(\frac{\lambda_2}{\lambda_2 + \mu_2} - \frac{\lambda_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right),\]
 \[P_{10}(t) = P^1_{ro}(t)P^2_{oo}(t) = \left(\frac{\mu_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t} \right)\left( \frac{\mu_2}{\lambda_2 + \mu_2} + \frac{\lambda_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right),
-\]
-\[P_{13}(t) = P^1_{rr}(t)P^2_{or}(t) = \left( \frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right)\left(\frac{\lambda_2}{\lambda_2 + \mu_2} - \frac{\lambda_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right),  
 \]
 \[P_{20}(t) = P^1_{oo}(t)P^2_{ro}(t) = \left(\frac{\mu_1}{\lambda_1 + \mu_1} + \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right)\left( \frac{\mu_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right),
 \]
-\[P_{23}(t) = P^1_{or}(t)P^2_{rr}(t) = \left( \frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right)\left(\frac{\lambda_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right),
-\]
-\[P_{31}(t) = P^1_{rr}(t)P^2_{ro}(t) = \left( \frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right)\left( \frac{\mu_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right),
-\]
-\[P_{32}(t) = P^1_{ro}(t)P^2_{rr}(t) = \left(\frac{\mu_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right)\left(\frac{\lambda_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right).\]
+\[P_{30}(t) = P^1_{ro}(t)P^2_{ro}(t) =\left(\frac{\mu_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right)\left(\frac{\mu_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t} \right). \]
 
-\begin{equation*}
-  \resizebox{.99\textwidth}{!}{$
-    P(t)= \kbordermatrix{
-    	& 0 & 1 & 2 & 3 \\
-   	  0 &0 &
-   	   \left(\frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right) \left(\frac{\mu_2}{\lambda_2 + \mu_2} + \frac{\lambda_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right)
-   	  & \left(\frac{\mu_1}{\lambda_1 + \mu_1} + \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)      t} \right)\left(\frac{\lambda_2}{\lambda_2 + \mu_2} - \frac{\lambda_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right)
-   	  &0  \\
-       1 &  \left(\frac{\mu_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t} \right)\left( \frac{\mu_2}{\lambda_2 + \mu_2} + \frac{\lambda_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right)
-       & 0&0 &
-		\left( \frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right)\left(\frac{\lambda_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right) \\
-      	2&	 \left(\frac{\mu_1}{\lambda_1 + \mu_1} + \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)      t}\right)\left( \frac{\mu_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right) 
-      	& 0 & 0&  \left( \frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right)\left(\frac{\lambda_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right)\\
-      	3 & 0 & \left( \frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1      )t}\right)\left( \frac{\mu_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right)
-      	&\left(\frac{\mu_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right)\left(\frac{\lambda_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right)
-      	&0  \\
-   }$}
-\end{equation*}
-Then 
+Then the transition matrix 
 \[
-  P^\text{'}(t)= \kbordermatrix{
+  P(t)= \kbordermatrix{
 		& 0 & 1 & 2 & 3 \\
-     0	& & & & \\
- 	 1  & & & & \\
- 	 2  & & & & \\
-     3 & & & &
+      0 &P^1_{or}P^2_{oo}& 
+    	P^1_{or}P^2_{oo}&
+    	P^1_{oo}P^2_{or}&
+    	P^1_{or}P^2_{or}& \\
+      1 &P^1_{ro}P^2_{oo}& 
+    	P^1_{rr}P^2_{oo}&
+    	P^1_{ro}P^2_{or}&
+    	P^1_{rr}P^2_{or}& \\
+      2 &P^1_{oo}P^2_{ro}& 
+    	P^1_{or}P^2_{ro}&
+    	P^1_{oo}P^2_{rr}&
+    	P^1_{or}P^2_{rr}& \\
+      3 &P^1_{ro}P^2_{ro}& 
+    	P^1_{rr}P^2_{ro}&
+    	P^1_{ro}P^2_{rr}&
+    	P^1_{rr}P^2_{rr}& \\
     }
 \]
+\begin{align*}
+  (QP)_{00} &=\sum_{k=0}^{3}q_{0k}P_{k0}(t) \\
+  			&= q_{00}P_{00}(t)+q_{01}P_{10}(t)+q_{02}P_{20}(t)+q_{03}P_{30}(t) \\
+  			&=-(\lambda_1 + \lambda_2) \left(\frac{\mu_1}{\lambda_1 + \mu_1} + \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)      t}\right)  \left(\frac{\mu_2}{\lambda_2 + \mu_2} + \frac{\lambda_2}{\lambda_2+ \mu_2}e^{-(\lambda_2 + \mu_2)t}\right) \\
+  			&\ \ \ +\lambda_1 \left(\frac{\mu_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t} \right)\left( \frac{\mu_2}{\lambda_2 + \mu_2} + \frac{\lambda_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right) \\
+ 		    &\ \ \ + \lambda_2\left(\frac{\mu_1}{\lambda_1 + \mu_1} + \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)      t}\right)\left( \frac{\mu_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right) \\
+  			&=- \frac{\lambda_1\mu_2(\lambda_1+\mu_1)}{(\lambda_1+\mu_1)(\lambda_2+\mu_2)}e^{-(\lambda_1 + \mu_1)t} + \frac{\lambda_2\mu_1(\lambda_2+\mu_2)}{(\lambda_1+\mu_1)(\lambda_2+\mu_2)}e^{-(\lambda_2 + \mu_2)t}\\
+ 			&\ \ \ - \frac{\lambda_1\lambda_2(\lambda_1 +\lambda_2 +\mu_1+\mu_2)}{(\lambda_1+\mu_1)(\lambda_2+\mu_2)}e^{-(\lambda_1+\lambda_2 +\mu_1+ \mu_2)t} \\
+  			&=-\frac{\lambda_1\mu_2}{(\lambda_2+\mu_2)}e^{-(\lambda_1 + \mu_1)t} - \frac{\lambda_2\mu_1}{\lambda_1+\mu_1}e^{-(\lambda_2 + \mu_2)t}\\
+			& \ \ \ - \frac{\lambda_1\lambda_2(\lambda_1+\lambda_2 +\mu_1+ \mu_2)}{(\lambda_1+\mu_1)(\lambda_2+\mu_2)}e^{-(\lambda_1+\lambda_2+\mu_1+ \mu_2)t}.
+\end{align*}
+Besides,
+\begin{align*}
+  P_{00}\textprime (t) &= d\frac{P_{00}(t)}{dt} \\
+   		&= d\frac{ \left(\frac{\mu_1}{\lambda_1 + \mu_1} + \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)      t}\right)
+ 	   \left(\frac{\mu_2}{\lambda_2 + \mu_2} + \frac{\lambda_2}{\lambda_2+ \mu_2}e^{-(\lambda_2 + \mu_2)t}\right)}{dt} \\
+ 	   &=-\lambda_1e^{-(\lambda_1 + \mu_1)t} \left(\frac{\mu_2}{\lambda_2 + \mu_2} + \frac{\lambda_2}{\lambda_2+ \mu_2}e^{-(\lambda_2 + \mu_2)t}\right) \\
+ 	   & \ \ \ - \lambda_2 e^{-(\lambda_2 + \mu_2)t} \left(\frac{\mu_1}{\lambda_1 + \mu_1} + \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right) \\
+ 	   &=-\frac{\lambda_1\mu_2}{(\lambda_2+\mu_2)}e^{-(\lambda_1 + \mu_1)t} - \frac{\lambda_2\mu_1}{\lambda_1+\mu_1}e^{-(\lambda_2 + \mu_2)t} \\
+ 	   & \ \ \ - \frac{\lambda_1\lambda_2(\lambda_1+\lambda_2 +\mu_1+ \mu_2)}{(\lambda_1+\mu_1)(\lambda_2+\mu_2)}e^{-(\lambda_1+\lambda_2 +\mu_1+ \mu_2)t}.
+\end{align*}
+Thus,
+\[\sum_{k=0}^{3}q_{0k}P_{k0}(t) = P_{00}\textprime (t).\]
+Similarly, for other $i,j \in E$, we have 
+\[\sum_{k=0}^{3}q_{ik}P_{kj}(t) = P_{ij}\textprime (t).\]
+As a result, the transition probability satisfies the forward equations.\\
+\begin{align*}
+  (PQ)_{00} &=\sum_{k=0}^{3}P_{0k}(t)q_{k0} \\
+  			&= P_{00}(t)q_{00}+P_{01}(t)q_{10}+P_{02}(t)q_{20}+P_{03}(t)q_{30} \\
+  			&=\left(\frac{\mu_1}{\lambda_1 + \mu_1} + \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)      t}\right)
+  \left(\frac{\mu_2}{\lambda_2 + \mu_2} + \frac{\lambda_2}{\lambda_2+ \mu_2}e^{-(\lambda_2 + \mu_2)t}\right) \left(-(\lambda_1+\lambda_2)\right) \\
+  			&\ \ \ +\left(\frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right) \left(\frac{\mu_2}{\lambda_2 + \mu_2} + \frac{\lambda_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right)\mu_1\\
+  			&\ \ \ +\left(\frac{\mu_1}{\lambda_1 + \mu_1} + \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)      t} \right)\left(\frac{\lambda_2}{\lambda_2 + \mu_2} - \frac{\lambda_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right)\mu_2 + 0\\
+			&=-\frac{\lambda_1\mu_2(\lambda_1+\mu_1)}{(\lambda_1+\mu_1)(\lambda_2+\mu_2)}e^{-(\lambda_1 + \mu_1)t} - \frac{\lambda_2\mu_1(\lambda_2+\mu_2)}{(\lambda_1+\mu_1)(\lambda_2+\mu_2)}e^{-(\lambda_2 + \mu_2)t} \\
+  			&\ \ \ + \frac{\lambda_1\lambda_2(\lambda_1+\lambda_2 +\mu_1+ \mu_2)}{(\lambda_1+\mu_1)(\lambda_2+\mu_2)}e^{-(\lambda_1+\lambda_2+\mu_1+ \mu_2)t}\\
+			&=-\frac{\lambda_1\mu_2}{(\lambda_2+\mu_2)}e^{-(\lambda_1 + \mu_1)t} - \frac{\lambda_2\mu_1}{\lambda_1+\mu_1}e^{-(\lambda_2 + \mu_      2)t} \\
+            & \ \ \ - \frac{\lambda_1\lambda_2(\lambda_1+\lambda_2 +\mu_1+ \mu_2)}{(\lambda_1+\mu_1)(\lambda_2+\mu_2)}e^{-(\lambda_1+\lambda_2+\mu_1+ \mu_2)t}\\
+  			&=P_{00}\textprime (t). 
+\end{align*}
+by previous steps.\\
+Namely,
+\[\sum_{k=0}^{3}P_{0k}(t)q_{k0} = P_{00}\textprime (t).\]
+
+Similarly, for other $i,j \in E$, we have 
+\[\sum_{k=0}^{3}P_{ik}(t)q_{kj} = P_{ij}\textprime (t).\]
+As a result, the transition probability satisfies the backward equations.\\
+
+\newpage
+Let $X_{t}$ be the number of individuals at time $t$.\\
+Assmue $X(0) = N \in bbn$.\\
+Then the state space is $E=\{0,1,2,...,N\}$.\\
+Then when $1 \leq i \leq $ and $i \in N$,
+\[P_{ii-1} = 1.\]
+When the system enters the state $0$, will stay there forever.\\
+Then the transition rate
+\[q_{ii} = -\mu\] 
+for $1 \leq i \leq $ and $i \in N$.\\
+Besides,
+\[q_{ii-1} = \mu P_{ii-1} = mu\]
+for $1 \leq i \leq $ and $i \in N$.\\
+
+
+
+
 
 \end{document}
