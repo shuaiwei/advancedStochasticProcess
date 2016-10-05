@@ -2,6 +2,7 @@
 
 % PACKAGES
 
+\usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb,enumerate}
@@ -62,7 +63,13 @@
 \newcommand{\Span}{\operatorname{Span}}	
 \newcommand{\rank}{\operatorname{rank}}	
 
+\usepackage{setspace}
+\doublespacing
+
+\usepackage{kbordermatrix}% http://www.hss.caltech.edu/~kcb/TeX/kbordermatrix.sty
+
 \begin{document}
+
 
 \noindent MATH 8170,  \\
 Fall 2016\\
@@ -71,11 +78,10 @@ Shuai Wei \\
 \
 \textwidth 6.0in \oddsidemargin 0.0in
 
-\noindent \textbf{1.} 
+\noindent \textbf{1.} \\
 Let $X_A(t)$ denote the number of organisms in state A at time $t$.\\
 Let $X_B(t)$ denote the number of organisms in state B.\\
-Then $X = \{X_A, X_B\}$ is a CTMC with sojourn time rate $\upsilon_{ij} = \alpha i + \beta j$ for state $(i,j)$. \\
-The state space is 
+Then $X = \{X_A, X_B\}$ is a CTMC with sojourn time rate $\upsilon_{ij} = \alpha i + \beta j$ for each state $(i,j) \in E$, where the state space is 
 \[E = \{(i,j)\}_{i,j\geq 0,i +j \geq 1} ,\]
 where $i,j \geq 0$ and $i+j \geq 1 $.\\
 The sojourn time $T_{ij}$ for the state $(i,j)$ is exponentially distributed with rate $\alpha i + \beta j$.\\
@@ -85,15 +91,15 @@ The transition probability is :
 
 \vspace{3mm}
 
-\noindent \textbf{2.}
+\noindent \textbf{2.}\\
 Let $X(t)$ denote the number of customers in the system at time $t$. \\
-The time until the next entering/birth $\sim exp(\lambda \alpha_i)$.\\
-The time until the next service ending/death $Y \sim exp(\mu)$.\\
+The time until the next entering/birth $X \sim \text{exp}(\lambda \alpha_i)$, where $i$ is the number of customers already in the system.\\
+The time until the next service ending/death $Y \sim \text{exp}(\mu)$.\\
 The birth rate $\lambda \alpha_i $, the death rate is $\mu$.\\
 Then $X(t)$ is a CTMC with sojourn time rate $\upsilon_i = \mu+ \lambda \alpha_i$ for state $i$.\\
 Since it can only change its state by increasing by one or decreasing by one, it is a birth and death procee.\\
-The state space is
-\[ E= \{0,1,2,3,...\}\]
+The state space is 
+\[E= \{0,1,2,3,...\}.\]
 The transition probability is :
 \[ 
   	P_{ij}  =  \left\{ 
@@ -110,4 +116,146 @@ The transition probability is :
 			 	  \right. 
 \]
 When $i = 0$, $P_{01} = 1$.
+
+\vspace{3mm}
+
+\noindent \textbf{3.}\\
+Yes, it is a CTMC.\\
+Assume the number of people who have a infection is $k$ given $1 \leq k \leq N$, then the state space is  
+\[E = \{k, n+1,...,N\}.\]
+For $1 \leq n \leq N$, let $\tau_n$ be the time when a new infection occurs.\\ 
+When a contact occurs at time $t$ with $X(t) = i$ , the probability of one being infected is 
+\[\frac{N(N-i)}{{N \choose 2}} = \frac{2i(N-i)}{N(N-1)}.\]  
+Since contacts between two members of this population occur in accordance
+with a Poisson process having rate $\lambda$,\\
+the sojourn time $T_{n} = \tau_{n+1} - \tau_n$ for $X(\tau_n) = i$ with $k \leq i < N $and $1\leq n \leq N$ satisfies 
+\[T_n \sim \text{exp}\left(\frac{2i(N-i)}{N(N-1)} \lambda \right).\]
+For $k \leq i < N$, 
+\begin{align*}
+  P(X_{n+1} = i + 1, T_{n+1} > t \mid X_n = i, (X_j, T_j), j <n) &= P(X_{n+1} = i + 1, T_{n+1} > t \mid X_n = i) \\
+  &= P(X_{1} = i + 1, T_{1} > t \mid X_0 = i) \\
+  &= \text{exp}\left(-\frac{2i(N-i)}{N(N-1)} \lambda t\right).
+\end{align*}
+If the system enters the state $N$, it will stay there forever.
+
+
+\noindent \textbf{4.}\\
+Define a CTMC with $E = \{0,1,2,3\}$.\\
+The state $0$ means both machine 1 and 2 operate.\\
+The state $1$ means machine 2 opertes but machine 1 is being repaired.\\
+The state $2$ means machine 1 opertes but machine 2 is being repaired.\\
+The state $3$ means both machine 1 and 2 are being repaired.\\
+The operate time 
+\[ O_i \sim \text{exp}(\lambda_i)\]  
+for $i = 1,2$. \\
+The repair time 
+\[R_i \sim \text{exp}(\mu i)\]
+for $i= 1,2$.\\
+Then by the memoryless property of exponential distribution,
+\[P_{01} = P(O_1 < O_2) = \frac{\lambda_1}{\lambda_1 + \lambda_2},\ \ 
+P_{02} = P(O_2 < O_1) = \frac{\lambda_2}{\lambda_1 + \lambda_2},\]
+\[P_{10} = P(R_1 < O_2) = \frac{\mu_1}{\mu_1 + \lambda_2},\ \ 
+P_{13} = P(O_2 < R_1) = \frac{\lambda_2}{\mu_1 + \lambda_2},\]
+\[P_{20} = P(R_2 < O_1) = \frac{\mu_2}{\lambda_1 + \mu_2}, \ \
+P_{23} = P(O_1 < R_2) = \frac{\lambda_1}{\lambda_1 + \mu_2},\] 
+\[P_{31} = P(R_2 < R_1) = \frac{\mu_2}{\mu_1+ \mu_2},\ \
+P_{32} = P(R_1 < R_2) = \frac{\mu_1}{\mu_1+ \mu_2}.\]
+Besides,
+\[P_{03} = P_{30} = P_{12} = P_{21} = 0.\]
+\renewcommand{\kbldelim}{(}% Left delimiter
+\renewcommand{\kbrdelim}{)}% Right delimiter
+
+
+We know
+\[\upsilon_0 = \lambda_1 + \lambda_2,\  
+\upsilon_1 = \mu_1 + \lambda_2,\
+\upsilon_2 = \lambda_1 + \mu_2,\
+\upsilon_3 = \mu_1 + \mu_2.\]
+So
+\[q_{01} = \upsilon_0P_{01} = \lambda_1, \
+q_{02} = \upsilon_0P_{02} = \lambda_2,\]
+\[q_{10} = \upsilon_1P_{10} = \mu_1, \
+q_{13} = \upsilon_1P_{13} = \lambda_2, \]
+\[q_{20} = \upsilon_2P_{20} = \mu_2, \
+q_{23} = \upsilon_2P_{23} = \lambda_1, \]
+\[q_{31} = \upsilon_3P_{31} = \mu_2, \
+q_{32} = \upsilon_3P_{32} = \mu_1, \]
+and
+\[q_{03} = q_{30} = q_{12} = q_{21} = 0.\]
+Moreover, $q_{ii} = \upsilon_i$ for $i = 0,1,2,3$.
+Thus, the transition rate matrix is 
+\[
+    Q= \kbordermatrix{
+    	& 0 & 1 & 2 & 3 \\
+   	  0 & -(\lambda_1 + \lambda_2) & \lambda_1 & 0 & \lambda_2  \\
+      1 &  \mu_1 & -(\mu_1 + \lambda_2) & 0 & \lambda_2  \\
+      2 & \mu_2 & 0 & -(\lambda_1 + \mu_2) & \lambda_1  \\
+      3 & 0 & \mu_2 & \mu_1 & -(\mu_1 + \mu_2)  \\
+  }
+\]
+Next we compute the transition matrix. \\
+Consider first the case that there is just the machine 1.\\
+Definte a CTMC with state space $ E = \{o, r\}$.\\
+State $o$ means it operates and $r$ means it is being repaired.\\
+Then $\upsilon_{o} = \lambda_1$ and $\upsilon_{r} = \mu_1$.\\
+So the transition rate matrix is 
+\[
+    Q_1= \kbordermatrix{
+    	& o & r \\
+      o & -\lambda_1 & \lambda_1\\
+      r & \mu_1 & -\mu_1
+  }
+\]
+According to the computational results from a similar example in class, we have \\
+\[ P^1_{oo}(t) = \frac{\mu_1}{\lambda_1 + \mu_1} + \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t},\
+P^1_{or}(t) = \frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t},\]
+\[ P^1_{rr}(t) = \frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t},\
+P^1_{ro}(t) = \frac{\mu_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}.\]
+In addtion, we have the similar result for the machine $2$.\\
+Since the machines act independently of each other,\\
+we have
+\[P_{01}(t) = P^1_{or}(t)P^2_{oo}(t) = \left(\frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right) \left(\frac{\mu_2}{\lambda_2 + \mu_2} + \frac{\lambda_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right), \]
+\[P_{02}(t) = P^1_{oo}(t)P^2_{or}(t) = \left(\frac{\mu_1}{\lambda_1 + \mu_1} + \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t} \right)\left(\frac{\lambda_2}{\lambda_2 + \mu_2} - \frac{\lambda_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right),
+\]
+\[P_{10}(t) = P^1_{ro}(t)P^2_{oo}(t) = \left(\frac{\mu_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t} \right)\left( \frac{\mu_2}{\lambda_2 + \mu_2} + \frac{\lambda_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right),
+\]
+\[P_{13}(t) = P^1_{rr}(t)P^2_{or}(t) = \left( \frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right)\left(\frac{\lambda_2}{\lambda_2 + \mu_2} - \frac{\lambda_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right),  
+\]
+\[P_{20}(t) = P^1_{oo}(t)P^2_{ro}(t) = \left(\frac{\mu_1}{\lambda_1 + \mu_1} + \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right)\left( \frac{\mu_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right),
+\]
+\[P_{23}(t) = P^1_{or}(t)P^2_{rr}(t) = \left( \frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right)\left(\frac{\lambda_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right),
+\]
+\[P_{31}(t) = P^1_{rr}(t)P^2_{ro}(t) = \left( \frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right)\left( \frac{\mu_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right),
+\]
+\[P_{32}(t) = P^1_{ro}(t)P^2_{rr}(t) = \left(\frac{\mu_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right)\left(\frac{\lambda_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right).\]
+
+\begin{equation*}
+  \resizebox{.99\textwidth}{!}{$
+    P(t)= \kbordermatrix{
+    	& 0 & 1 & 2 & 3 \\
+   	  0 &0 &
+   	   \left(\frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right) \left(\frac{\mu_2}{\lambda_2 + \mu_2} + \frac{\lambda_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right)
+   	  & \left(\frac{\mu_1}{\lambda_1 + \mu_1} + \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)      t} \right)\left(\frac{\lambda_2}{\lambda_2 + \mu_2} - \frac{\lambda_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right)
+   	  &0  \\
+       1 &  \left(\frac{\mu_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t} \right)\left( \frac{\mu_2}{\lambda_2 + \mu_2} + \frac{\lambda_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right)
+       & 0&0 &
+		\left( \frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right)\left(\frac{\lambda_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right) \\
+      	2&	 \left(\frac{\mu_1}{\lambda_1 + \mu_1} + \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)      t}\right)\left( \frac{\mu_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right) 
+      	& 0 & 0&  \left( \frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\lambda_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right)\left(\frac{\lambda_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right)\\
+      	3 & 0 & \left( \frac{\lambda_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1      )t}\right)\left( \frac{\mu_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right)
+      	&\left(\frac{\mu_1}{\lambda_1 + \mu_1} - \frac{\mu_1}{\lambda_1 + \mu_1}e^{-(\lambda_1 + \mu_1)t}\right)\left(\frac{\lambda_2}{\lambda_2 + \mu_2} - \frac{\mu_2}{\lambda_2 + \mu_2}e^{-(\lambda_2 + \mu_2)t}\right)
+      	&0  \\
+   }$}
+\end{equation*}
+Then 
+\[
+  P^\text{'}(t)= \kbordermatrix{
+		& 0 & 1 & 2 & 3 \\
+     0	& & & & \\
+ 	 1  & & & & \\
+ 	 2  & & & & \\
+     3 & & & &
+    }
+\]
+
 \end{document}

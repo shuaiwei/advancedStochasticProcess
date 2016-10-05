@@ -112,7 +112,7 @@
 
 
 \noindent \textbf{3.}\\
-\begin{enumerate}
+\begin{enumerate}[(a)]
 	\item
 	  Assume $p \neq q$.\\
 	  Let $\{X_n\}$ be the winning of the $n^{th}$ bet for $n \geq 1$.\\
@@ -310,7 +310,7 @@
 		So
 		\[ d_{N} = d_1-2(N-1).\]
 		We know $d_1 = E_1(T)-E_0(T) = E_1(T)$, and \\
-		$d_{N} = E_N(T)-E_{N-1}(T) = -E_{N-1}(T)$.
+		$d_{N} = E_N(T)-E_{N-1}(T) = -E_{N-1}(T)$.\\
 		Since $p=q$, by symmetry, we have 
 		\[E_1(T) = E_{N-1}(T).\]
 		So 
@@ -321,10 +321,10 @@
 		\[d_i = d_1 - 2(i-1) = N-2i+1.\]
 		As a result, given intial fortune $i$ \$, we have 
 		\begin{align*}
-		  E_{T}=E_i(T) &= d_i+E_{i-1}^T \\
-		  		 &= d_i + d_{i-1} + E_{i-2}^T \\
+		  E(T)=E_i(T) &= d_i+E_{i-1}(T) \\
+		  		&= d_i + d_{i-1} + E_{i-2}(T) \\
 		  		 &=\ldots \\
-				 &=d_i + d_{i-1} + \ldots + d_{1}+E_{0}^T\\
+				   &=d_i + d_{i-1} + \ldots + d_{1}+E_{0}(T)\\
 		  		 &= (N-2i+1) + \left(N-2(i-1)+1\right) + \ldots + N-1 + 0\\
 		  		 &= Ni-i^2.
 		\end{align*}
@@ -336,7 +336,7 @@
 Consider the regenerating process w.r.t. the arrival times of the train.\\
 For $n \geq 1$, let $T_n$ be the arrival time of the $n^{th}$ customer.\\
 Then the interrenewals $\{T_{n}-T_{n-1}\}$ is a $iid$ sequence of nonnegative random variables.\\ 
-Besides, we know $\left(T_{n}-T_{n-1}\right) \sim exp(\lambda)$ for $n \geq 1$, so $E(1) = \frac{1}{\lambda}.$\\
+Besides, we know $\left(T_{n}-T_{n-1}\right) \sim exp(\lambda)$ for $n \geq 1$, so $E(T_1) = \frac{1}{\lambda}$ given $T(0)= 0$.\\
 Since 
 \[T_N = \sum_{n=1}^N \left(T_{n}-T_{n-1}\right),\]
 \[E(T_N) = \sum_{n=1}^NE\left(T_{n}-T_{n-1}\right) = NE(T_{1}) = \frac{N}{\lambda}.\] 
@@ -363,7 +363,7 @@ So
   								&= c\sum_{l=1}^n\left(K-E(T_l)\right)\\
   								&= cKn-c\sum_{l=1}^nE(T_l) \\
   								& = cKn-c\sum_{l=1}^n \frac{K}{2} \\
-  								&= \frac{cKn}{2}
+  								&= \frac{cKn}{2}.
 \end{align*}
 Thus,
 \begin{align*}
@@ -373,7 +373,7 @@ Thus,
   										&= \frac{cK}{2} \lambda K \\
   									    &= \frac{c\lambda K^2}{2}
 \end{align*}
-since given $K$, $N(K)\sim$Poisson$(\lambda K)$.
+since given $K$, $N(K)\sim$Poisson$(\lambda K)$.\\
 So
 \[E(R_2) = cNK + E\left( \sum_{l=1}^{N(K)}c(K-T_l) \right) = cNK + \frac{c\lambda K^2}{2}.\]
 Since the total cost during the first cycle $\tau_1$ is 
